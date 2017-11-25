@@ -12,9 +12,10 @@ class CircleIntersaction {
         printA(A);
 
         for (int i = 0; i < len; i++) {
-            startP[i] = i - A[i];
-            endP[i] = i + A[i];
+            startP[i] = (long)i - (long)A[i];
+            endP[i] = (long)i + (long)A[i];
         }
+
 
         Arrays.sort(startP);
         Arrays.sort(endP);
