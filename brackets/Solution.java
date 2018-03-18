@@ -1,24 +1,9 @@
-import java.util.ArrayList;
+package codility.brackets;
+
 import java.util.HashMap;
 import java.util.Stack;
 
-class Brackets {
-  public static void main(String[] args) {
-    ArrayList<String> inputList = new ArrayList<String>();
-    Brackets bracket = new Brackets();
-    int ans;
-
-    // inputs
-    inputList.add("{[()()]}");
-    inputList.add("([)()]");
-    inputList.add("{{{{");
-
-    for (String input : inputList) {
-      ans = bracket.solution(input);
-      System.out.printf("ans of %s is %d\n", input, ans);
-    }
-  }
-
+class Solution {
   public int solution(String S) {
     Character[] characterList = new Character[] {'(', ')', '[', ']', '{', '}'};
     Stack<Character> stack = new Stack<Character>();
@@ -62,7 +47,7 @@ class Brackets {
     }
 
     if (stack.empty()) {
-        return 1;
+      return 1;
     }
 
     return 0;
