@@ -1,19 +1,11 @@
-JFLAGS = -g
-JC = javac
-.SUFFIXES: .java .class
-.java.class:
-		$(JC) $(JFLAGS) $*.java
+.PHONY: fish
+all:
 
-CLASSES = \
-	hello-world/HelloWorld.java \
-	two-sum/Solution.java \
-	circle/intersaction/CircleIntersaction.java
+fish: classes/codility/fish/TestFish.class
+	java -cp classes codility.fish.TestFish
 
-default: classes
-
-classes: $(CLASSES:.java=.class)
+classes/codility/fish/TestFish.class: fish/*.java
+	javac -d classes -g fish/*.java
 
 clean:
-		$(RM) *.class
-		$(RM) */*.class
-		$(RM) */*/*.class
+	find classes -type f -iname *.class | tr '\n' ' ' | xargs rm -f
