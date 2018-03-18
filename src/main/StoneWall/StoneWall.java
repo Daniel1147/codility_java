@@ -1,10 +1,9 @@
 import java.util.Stack;
-import java.util.Arrays;
 
 class StoneWall {
   public static void main(String argv[]) {
     /* int[] input = new int[]{8, 8, 5, 7, 9, 8, 7, 4, 8}; */
-    int[] input = new int[]{8, 0, 8, 0, 8};
+    int[] input = new int[] {8, 0, 8, 0, 8};
     int ans;
 
     StoneWall stoneWall = new StoneWall();
@@ -13,8 +12,7 @@ class StoneWall {
     System.out.printf("answer is %s.\n", ans);
   }
 
-  public int solution(int[] input)
-  {
+  public int solution(int[] input) {
     Stack<Integer> stack = new Stack<Integer>();
     int i, currentHeight;
 
@@ -24,7 +22,7 @@ class StoneWall {
       currentHeight = input[i];
 
       // pop out all elements in stack which are greater than current height
-      while ( ! stack.empty()) {
+      while (!stack.empty()) {
         if (stack.peek() > currentHeight) {
           stack.pop();
 
