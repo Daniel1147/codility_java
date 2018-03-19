@@ -16,6 +16,9 @@ class TestDominator {
     // input 3
     inputList.add(new int[] {1, 1, 1, 1, 1, 2, 2, 2});
 
+    // input 4
+    inputList.add(new int[] {1, 1, 1, 2, 2, 2, 5});
+
     Solution solution = new Solution();
     for (int[] input : inputList) {
       System.out.printf("input: %s\nans: %d\n", Arrays.toString(input), solution.solution(input));
