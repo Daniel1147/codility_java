@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package codility.two_sum;
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
@@ -19,16 +19,5 @@ class Solution {
         }
 
         return -1;
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-
-        int[] testCase = {2, 7, 11, 15};
-        int target = 9;
-
-        System.out.println(Arrays.toString(testCase));
-        System.out.println(target);
-        System.out.println(Arrays.toString(solution.twoSum(testCase, target)));
     }
 }
