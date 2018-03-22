@@ -10,6 +10,9 @@ class TestMaxSliceSum {
     // input 1
     inputList.add(new int[] {3, 2, -6, 4, 0});
 
+    // input 2
+    inputList.add(new int[] {-1});
+
     Solution solution = new Solution();
     for (int[] input : inputList) {
       System.out.printf("input: %s\nans: %d\n", Arrays.toString(input), solution.solution(input));
