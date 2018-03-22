@@ -6,7 +6,7 @@ public class StackExample {
 
     private Stack<Integer> stack;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         StackExample stackExample = new StackExample();
 
         stackExample.demo();

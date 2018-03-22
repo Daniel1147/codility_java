@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Arrays;
 
 class TestNest {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         List<String> inputList = new ArrayList<String>();
 
         // input 1

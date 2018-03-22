@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Arrays;
 
 class TestFish {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         List<int[]> inputAList = new ArrayList<int[]>();
         List<int[]> inputBList = new ArrayList<int[]>();
 

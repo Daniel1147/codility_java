@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class TestDominator {
-  public static void main(String args[]) {
+  public static void main(String[] args) {
     ArrayList<int[]> inputList = new ArrayList<int[]>();
 
     // input 1
