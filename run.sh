@@ -5,7 +5,7 @@
 CLASSPATH=classes
 
 if [ -z "$TARGET" ]; then
-    echo 'undefined TARGET'
+    echo "usage: $ TARGET=<<target test java file>> $0"
     exit 1
 fi
 
