@@ -1,5 +1,6 @@
 package codility.max_double_slice_sum;
 
+/* import java.util.Arrays; */
 
 class Solution {
   public int solution(int[] A) {
@@ -15,6 +16,7 @@ class Solution {
       final int currentNum = A[i - 1];
       leftMax[i] = max(leftMax[i - 1] + currentNum, 0);
     }
+    /* System.out.printf("left: %s\n", Arrays.toString(leftMax)); */
 
     // count right max
     rightMax[inputLen - 2] = 0;
@@ -22,9 +24,10 @@ class Solution {
       final int currentNum = A[i + 1];
       rightMax[i] = max(rightMax[i + 1] + currentNum, 0);
     }
+    /* System.out.printf("right: %s\n", Arrays.toString(rightMax)); */
 
     doubleMax = 0;
-    for (int i = 1; i < inputLen - 2; i++) {
+    for (int i = 1; i < inputLen - 1; i++) {
       doubleMax = max(doubleMax, leftMax[i] + rightMax[i]);
     }
 
