@@ -2,16 +2,19 @@ package codility.count_factors;
 
 class Solution {
   public int solution(int N) {
-    int counter = 0;
+    int counter = 1;
     int i;
-    for (i = 1; i * i < N; i++) {
-      if (N % i == 0) {
-        counter += 2;
-      }
-    }
+    int currentNum = N;
 
-    if (i * i == N) {
-      counter++;
+    for (i = 2; i * i <= currentNum; i++) {
+      int currentCount = 0;
+      while (currentNum % i == 0) {
+        /* System.out.printf("%d %d\n", i, currentCount); */
+        currentCount++;
+        currentNum /= i;
+      }
+
+      counter *= currentCount + 1;
     }
 
     return counter;
