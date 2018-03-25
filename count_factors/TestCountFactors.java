@@ -5,6 +5,13 @@ import java.util.Arrays;
 
 class TestCountFactors {
   public static void main(String[] args) {
+
+    // for (int i = 1; i < 11; i++) {
+    //   double sqrt = Math.sqrt(i);
+    //
+    //   System.out.printf("sqrt: %f, sqrt^2: %f, sqrt to int: %d\n", sqrt, sqrt * sqrt, (int) sqrt);
+    // }
+
     ArrayList<Integer> inputList = new ArrayList<Integer>();
 
     // input 1
@@ -18,6 +25,9 @@ class TestCountFactors {
 
     // input 4
     inputList.add(32);
+
+    // input 5
+    inputList.add(16);
 
     Solution solution = new Solution();
     for (Integer input : inputList) {
