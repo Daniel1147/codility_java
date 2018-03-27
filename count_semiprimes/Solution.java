@@ -11,7 +11,7 @@ class Solution {
 
     for (int i = 2; i < N + 1; i++) {
       if (prime[i] == 0) {
-        for (int j = i * i; j < N + 1; j += i) {
+        for (int j = i * i; j < N + 1 && j >=0 ; j += i) {
           if (prime[j] == 0) {
             prime[j] = i;
           }
@@ -37,10 +37,10 @@ class Solution {
       ans[i] = semiprimeCount[Q[i]] - semiprimeCount[P[i] - 1];
     }
 
-    int[] index = new int[N + 1];
-    for (int i = 0; i < N + 1; i++) {
-      index[i] = i;
-    }
+    // int[] index = new int[N + 1];
+    // for (int i = 0; i < N + 1; i++) {
+    //   index[i] = i;
+    // }
 
     // System.out.printf("index:\t\t%s\n", intArrToString(index));
     // System.out.printf("prime:\t\t%s\n", intArrToString(prime));
