@@ -26,6 +26,18 @@ class TestChocolatesByNumbers {
     expected = 5;
     inputList.add(new TestCase(N, M, expected));
 
+    // input 2
+    N = 10;
+    M = 1;
+    expected = 10;
+    inputList.add(new TestCase(N, M, expected));
+
+    // input 3
+    N = 1;
+    M = 10;
+    expected = 1;
+    inputList.add(new TestCase(N, M, expected));
+
     Solution s = new Solution();
     for (TestCase input : inputList) {
       N = input.N;
