@@ -44,8 +44,19 @@ class TestFibFrog {
     expected = 2;
     inputList.add(new TestCase(A, expected));
 
+    // input 6
+    A = new int[]{};
+    expected = 1;
+    inputList.add(new TestCase(A, expected));
+
+    // input 7
+    A = new int[]{0};
+    expected = 1;
+    inputList.add(new TestCase(A, expected));
+
     Solution s = new Solution();
     for (TestCase input : inputList) {
+      System.out.printf("\n====\n", Arrays.toString(A));
       A = input.A;
       expected = input.expected;
       ans = s.solution(A);

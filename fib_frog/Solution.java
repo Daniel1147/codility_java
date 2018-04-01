@@ -57,7 +57,7 @@ class Solution {
   }
 
   private int getFibCount(int[] fibMap, int[] riverMap, int[] fibCount, int target) {
-    int min = riverMap.length;
+    int min = riverMap.length + 1;
     int previousP;
     int currentCount;
     for (int i = 0; i < fibMap.length; i++) {
@@ -74,7 +74,7 @@ class Solution {
       }
     }
 
-    if (min == riverMap.length) {
+    if (min == riverMap.length + 1) {
       return 0;
     }
 
