@@ -7,17 +7,20 @@ class Solution {
     int[] fibMap = getFibMap();
     int[] riverMap = getRiverMap(A);
 
-    // System.out.printf("%s\n", Arrays.toString(fibMap));
-    // System.out.printf("%s\n", Arrays.toString(riverMap));
+    /* System.out.printf("%s\n", Arrays.toString(fibMap)); */
+    /* System.out.printf("river map: %s\n", Arrays.toString(riverMap)); */
 
-    int currentP = 0;
-    int distance;
-    int stepCounter = 0;
-    int i, startP;
+    int[] fibCount = new int[A.length + 2];
+    fibCount[0] = 1;
 
-    stepCounter = countStep(fibMap, riverMap, currentP);
+    for (int i = 1; i < A.length + 2; i++) {
+      if (riverMap[i] == 1) {
+        fibCount[i] = getFibCount(fibMap, riverMap, fibCount, i);
+      }
+    }
+    /* System.out.printf("fib count: %s\n", Arrays.toString(fibCount)); */
 
-    return stepCounter;
+    return fibCount[A.length + 1] - 1;
   }
 
   private int[] getFibMap() {
@@ -43,63 +46,38 @@ class Solution {
 
   private int[] getRiverMap(int[] A) {
     int[] riverMap = new int[A.length + 2];
-    int leafCount = 1;
-
-    riverMap[0] = -1;
-
+    riverMap[0] = 1;
     for (int i = 0; i < A.length; i++) {
-      if (A[i] == 1) {
-        riverMap[leafCount] = i;
-        leafCount++;
-      }
+      riverMap[i + 1] = A[i];
     }
 
-    riverMap[leafCount] = A.length;
-    leafCount++;
+    riverMap[A.length + 1] = 1;
 
-    return Arrays.copyOfRange(riverMap, 0, leafCount);
+    return riverMap;
   }
 
-  private boolean isFibNum(int n, int[] fibMap) {
+  private int getFibCount(int[] fibMap, int[] riverMap, int[] fibCount, int target) {
+    int min = riverMap.length;
+    int previousP;
+    int currentCount;
     for (int i = 0; i < fibMap.length; i++) {
-      if (n == fibMap[i]) {
-        return true;
+      if (target - fibMap[i] < 0) {
+        break;
       }
-    }
 
-    return false;
-  }
-
-  private int countStep(int[] fibMap, int[] riverMap, int currentP) {
-    int nextP;
-    int nextCountStep;
-    for (nextP = riverMap.length - 1; nextP > currentP; nextP--) {
-      if (reachable(fibMap, riverMap, currentP, nextP)) {
-        /* System.out.printf("jump from %d to %d\n", riverMap[currentP], riverMap[nextP]); */
-
-        if (nextP == riverMap.length - 1) {
-          return 1;
-        }
-
-        nextCountStep = countStep(fibMap, riverMap, nextP);
-        if (nextCountStep >= 0) {
-          return countStep(fibMap, riverMap, nextP) + 1;
+      previousP = target - fibMap[i];
+      if (riverMap[previousP] == 1 && fibCount[previousP] > 0) {
+        currentCount = fibCount[previousP] + 1;
+        if (min > currentCount) {
+          min = currentCount;
         }
       }
     }
 
-    return -1;
-  }
-
-  private boolean reachable(int[] fibMap, int[] riverMap, int startP, int targetP) {
-    int distance = riverMap[targetP] - riverMap[startP];
-
-    for (int i = fibMap.length - 1; i > 0; i--) {
-      if (distance == fibMap[i]) {
-        return true;
-      }
+    if (min == riverMap.length) {
+      return 0;
     }
 
-    return false;
+    return min;
   }
 }

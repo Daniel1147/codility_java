@@ -39,6 +39,11 @@ class TestFibFrog {
     expected = 2;
     inputList.add(new TestCase(A, expected));
 
+    // input 5
+    A = new int[]{1, 0, 1, 0, 0, 1, 0, 0};
+    expected = 2;
+    inputList.add(new TestCase(A, expected));
+
     Solution s = new Solution();
     for (TestCase input : inputList) {
       A = input.A;
