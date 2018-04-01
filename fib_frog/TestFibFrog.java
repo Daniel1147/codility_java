@@ -1,0 +1,38 @@
+package codility.fib_frog;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+class TestCase {
+  public int[] A;
+  public int expected;
+
+  public TestCase(int[] A, int expected) {
+    this.A = A;
+    this.expected = expected;
+  }
+}
+
+class TestFibFrog {
+  public static void main(String[] args) {
+    ArrayList<TestCase> inputList = new ArrayList<TestCase>();
+    int expected, ans;
+    int[] A;
+
+    // input 1
+    A = new int[]{0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0};
+    expected = 3;
+    inputList.add(new TestCase(A, expected));
+
+    Solution s = new Solution();
+    for (TestCase input : inputList) {
+      A = input.A;
+      expected = input.expected;
+      ans = s.solution(A);
+
+      System.out.printf("input:\n\tA:\t%s\n", Arrays.toString(A));
+      System.out.printf("expected:\t%d\n", expected);
+      System.out.printf("got:\t%d\n", ans);
+    }
+  }
+}
