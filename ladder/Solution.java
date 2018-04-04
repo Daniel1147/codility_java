@@ -26,13 +26,19 @@ class Solution {
       n = 3;
     }
     int[] fibL = new int[n];
+    int newFib;
+    int max = 1 << 30;
 
     fibL[0] = 1;
     fibL[1] = 1;
     fibL[2] = 2;
 
     for (int i = 3; i < n; i++) {
-      fibL[i] = fibL[i - 2] + fibL[i - 1];
+      newFib = fibL[i - 2] + fibL[i - 1];
+      while (newFib >= max) {
+        newFib -= max;
+      }
+      fibL[i] = newFib;
     }
 
     return fibL;
