@@ -8,25 +8,20 @@ class Solution {
     boolean passTry;
 
     max = ((A.length / K) + 1) * M;
-    tryNum = max;
+    min = 0;
 
-    while (tryNum >= 0) {
+    while (min < max) {
+      tryNum = (min + max) / 2;
       passTry = available(tryNum, K, A);
-
-      // System.out.printf("pass try of %d is %s\n", tryNum, passTry);
-      //
+      // System.out.printf("num %d pass try %s\n", tryNum, passTry);
       if (passTry) {
-        tryNum--;
-
-        continue;
+        max = tryNum;
+      } else {
+        min = tryNum + 1;
       }
-
-      return tryNum + 1;
     }
 
-    // System.out.println("return max");
-
-    return 0;
+    return min;
   }
 
   boolean available(int minMax, int K, int[] A) {
@@ -51,6 +46,8 @@ class Solution {
       blockCount += A[i];
       i++;
     }
+
+    // System.out.printf("try num: %s, used block %d\n", minMax, usedBlock);
 
     return true;
   }
