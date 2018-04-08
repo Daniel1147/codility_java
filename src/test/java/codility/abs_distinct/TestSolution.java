@@ -71,6 +71,15 @@ public class TestSolution {
     assertEquals(errorMsg(), expected, actual);
   }
 
+  @Test
+  public void TestOverflow() {
+    A = new int[] {1 << 31, 1 << 31};
+    expected = 1;
+
+    actual = s.solution(A);
+    assertEquals(errorMsg(), expected, actual);
+  }
+
   private String errorMsg() {
     return String.format("failed at input A: %s\n", Arrays.toString(A));
   }

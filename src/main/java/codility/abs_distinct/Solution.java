@@ -2,12 +2,11 @@ package codility.abs_distinct;
 
 // import static java.lang.System.out;
 
-import java.util.Arrays;
 
 public class Solution {
   public int solution(int[] A) {
     int divL, divR;
-    int minL, minR;
+    long minL, minR;
     int N = A.length;
     int counter = 0;
 
@@ -38,19 +37,19 @@ public class Solution {
       // both in range
       if (inRange(divR, N) && inRange(divL, N)) {
         if (A[divL] * -1 < A[divR]) {
-          if (A[divL] * -1 > minL) {
+          if ((long) A[divL] * -1 > minL) {
             counter++;
-            minL = A[divL] * -1;
+            minL = (long) A[divL] * -1;
           }
 
           // out.println("step left but both");
           divL--;
         } else {
-          if (A[divR] > minR) {
+          if ((long) A[divR] > minR) {
             if (!inRange(divL, N) || A[divL] * -1 != A[divR]) {
               counter++;
             }
-            minR = A[divR];
+            minR = (long) A[divR];
           }
 
           // out.println("step right but both");
@@ -62,9 +61,9 @@ public class Solution {
 
       // only right in range
       if (inRange(divR, N)) {
-        if (A[divR] > minR) {
+        if ((long) A[divR] > minR) {
           counter++;
-          minR = A[divR];
+          minR = (long) A[divR];
         }
         // out.println("step right");
         divR++;
@@ -73,9 +72,9 @@ public class Solution {
       }
 
       // only left in range
-      if (A[divL] * -1 > minL) {
+      if ((long) A[divL] * -1 > minL) {
         counter++;
-        minL = A[divL] * -1;
+        minL = (long) A[divL] * -1;
       }
       // out.println("step left");
       divL--;
@@ -85,7 +84,7 @@ public class Solution {
   }
 
   private boolean inRange(int i, int len) {
-    if (i >=0 && i < len) {
+    if (i >= 0 && i < len) {
       return true;
     }
 
