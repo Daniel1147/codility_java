@@ -2,6 +2,8 @@ package codility.min_max_division;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 class TestCase {
   public int K;
@@ -16,44 +18,21 @@ class TestCase {
     this.expected = expected;
   }
 
-  public void test(int caseNum) {
-    int ans;
-    Solution s = new Solution();
-
-    System.out.printf("start test %d ====\n", caseNum);
-
-    // get ans
-    ans = s.solution(K, M, A);
-    if (passTest(ans)) {
-      System.out.printf("PASS test %d!\n", caseNum);
-
-      return;
-    }
-
-    System.out.printf("failed at test %d.\n", caseNum);
-    // print test case
-    System.out.printf("input:\tK = %d, M = %d,\n\tA = %s\n", K, M, Arrays.toString(A));
-    System.out.printf("expected:\t%d\n", expected);
-
-    // print ans
-    System.out.printf("got:\t\t%d\n", ans);
-
-    return;
-  }
-
-  private boolean passTest(int ans) {
-    if (ans == expected) {
-      return true;
-    }
-
-    return false;
+  public String failMsg() {
+    String msg;
+    msg = "\nfailed at input:\n"
+      + String.format("\tK:\t%d\n", K)
+      + String.format("\tM:\t%d\n", M)
+      + String.format("\tA:\t%s\n", Arrays.toString(A));
+    return msg;
   }
 }
 
-class TestMinMaxDivision {
-  public static void main(String[] args) {
+public class TestMinMaxDivision {
+  @Test
+  public void TestSolution() {
     ArrayList<TestCase> inputList = new ArrayList<TestCase>();
-    int expected, ans;
+    int expected;
     int K, M;
     int[] A;
 
@@ -107,9 +86,16 @@ class TestMinMaxDivision {
     inputList.add(new TestCase(K, M, A, expected));
 
     for (int i = 0; i < inputList.size(); i++) {
+      Solution s = new Solution();
       TestCase input = inputList.get(i);
+      K = input.K;
+      M = input.M;
+      A = input.A;
+      expected = input.expected;
 
-      input.test(i + 1);
+      int actual = s.solution(K, M, A);
+
+      assertEquals(input.failMsg(), expected, actual);
     }
   }
 }
