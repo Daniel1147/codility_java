@@ -6,7 +6,6 @@ class Solution {
   private int N;
   private int line1, line2;
   private int counter;
-  private int currentCounter;
   private int currentSum;
   private int line3;
 
@@ -22,25 +21,20 @@ class Solution {
     counter = 0;
 
     for (line1 = 0; line1 < N - 2; line1++) {
-      currentCounter = 0;
       line2 = line1 + 1;
       line3 = line2 + 1;
       for (; line2 < N - 1; line2++) {
         currentSum = A[line1] + A[line2];
-        if (line3 <= line2) {
-          line3 = line2 + 1;
-          currentCounter = 0;
+        if (line3 == line2) {
+          line3++;
         }
 
-        if (currentCounter > 0) {
-          currentCounter--;
-        }
+        while (line3 < N && A[line3] < currentSum)
+          line3++;
 
-        for (; line3 < N && A[line3] < currentSum; line3++) {
-          currentCounter++;
+        if (line3 - 1 > line2 && A[line3 - 1] < currentSum) {
+          counter += line3 - 1 - line2;
         }
-
-        counter += currentCounter;
       }
     }
 
