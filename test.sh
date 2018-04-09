@@ -4,11 +4,7 @@ set -u
 
 source ./config.sh
 
-# make sure TCLASS exists
-if [ -z "$TCLASS" ]; then
-    echo "usage: $ TCLASS=<<target test java file>> $0"
-    exit 1
-fi
+# TCLASS: target test java file
 
 IFS='.' read -ra PACKAGE <<< "$TCLASS"
 
