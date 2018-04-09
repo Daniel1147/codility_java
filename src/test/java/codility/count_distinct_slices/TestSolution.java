@@ -18,10 +18,31 @@ public class TestSolution {
   }
 
   @Test
+  public void TestSimple() {
+    M = 0;
+    A = new int[] {0};
+    expected = 1;
+    actual = s.solution(M, A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
   public void Test1() {
     M = 6;
     A = new int[] {3, 4, 5, 5, 2};
     expected = 9;
+    actual = s.solution(M, A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void TestLargeN() {
+    M = 100000;
+    A = new int[100000];
+    for (int i = 0; i < 100000; i++) {
+      A[i] = i;
+    }
+    expected = 1000000000;
     actual = s.solution(M, A);
     assertEquals(getFailMsg(), expected, actual);
   }
