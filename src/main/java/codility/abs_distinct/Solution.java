@@ -4,27 +4,17 @@ package codility.abs_distinct;
 
 
 public class Solution {
+  private int counter, divL, divR, N;
+  private long minL, minR;
+  private int[] A;
+
   public int solution(int[] A) {
-    int divL, divR;
-    long minL, minR;
-    int N = A.length;
-    int counter = 0;
+    this.A = A;
+    N = A.length;
+    counter = 0;
 
     // find first non negetive num
-    divL = -1;
-    divR = N;
-    for (int i = 0; i < N; i++) {
-      if (A[i] < 0) {
-        divL = i;
-      }
-
-      if (A[i] > 0) {
-        divR = i;
-        break;
-      }
-    }
-
-    // out.printf("\nA: %s, divL: %d, divR: %d\n", Arrays.toString(A), divL, divR);
+    setDiv();
 
     // count 0
     if (divL != divR - 1) {
@@ -37,23 +27,9 @@ public class Solution {
       // both in range
       if (inRange(divR, N) && inRange(divL, N)) {
         if (A[divL] * -1 < A[divR]) {
-          if ((long) A[divL] * -1 > minL) {
-            counter++;
-            minL = (long) A[divL] * -1;
-          }
-
-          // out.println("step left but both");
-          divL--;
+          stepLeft();
         } else {
-          if ((long) A[divR] > minR) {
-            if (!inRange(divL, N) || A[divL] * -1 != A[divR]) {
-              counter++;
-            }
-            minR = (long) A[divR];
-          }
-
-          // out.println("step right but both");
-          divR++;
+          stepRightCheckLeft();
         }
 
         continue;
@@ -61,23 +37,13 @@ public class Solution {
 
       // only right in range
       if (inRange(divR, N)) {
-        if ((long) A[divR] > minR) {
-          counter++;
-          minR = (long) A[divR];
-        }
-        // out.println("step right");
-        divR++;
+        stepRight();
 
         continue;
       }
 
       // only left in range
-      if ((long) A[divL] * -1 > minL) {
-        counter++;
-        minL = (long) A[divL] * -1;
-      }
-      // out.println("step left");
-      divL--;
+      stepLeft();
     }
 
     return counter;
@@ -89,5 +55,47 @@ public class Solution {
     }
 
     return false;
+  }
+
+  private void stepLeft() {
+    if ((long) A[divL] * -1 > minL) {
+      counter++;
+      minL = (long) A[divL] * -1;
+    }
+    divL--;
+  }
+
+  private void stepRightCheckLeft() {
+    if ((long) A[divR] > minR) {
+      if (!inRange(divL, N) || A[divL] * -1 != A[divR]) {
+        counter++;
+      }
+      minR = (long) A[divR];
+    }
+
+    divR++;
+  }
+
+  private void stepRight() {
+    if ((long) A[divR] > minR) {
+      counter++;
+      minR = (long) A[divR];
+    }
+    divR++;
+  }
+
+  private void setDiv() {
+    divL = -1;
+    divR = N;
+    for (int i = 0; i < N; i++) {
+      if (A[i] < 0) {
+        divL = i;
+      }
+
+      if (A[i] > 0) {
+        divR = i;
+        return;
+      }
+    }
   }
 }
