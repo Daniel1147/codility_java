@@ -2,6 +2,6 @@
 
 set -u
 
-DESC=classes
+source ./config.sh
 
 rm -rf classes/*
