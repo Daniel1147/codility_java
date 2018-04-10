@@ -34,8 +34,13 @@ class Solution {
         }
       }
 
-      lastMin = lastMin - A[i];
-      lastMax = lastMax + A[i];
+      if (A[i] >= 0) {
+        lastMin = lastMin - A[i];
+        lastMax = lastMax + A[i];
+      } else {
+        lastMax = lastMax - A[i];
+        lastMin = lastMin + A[i];
+      }
     }
 
     return minAbs();
