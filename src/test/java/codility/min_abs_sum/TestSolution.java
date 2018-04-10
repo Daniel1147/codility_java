@@ -49,32 +49,16 @@ public class TestSolution {
   }
 
   @Test
+  public void Test3() {
+    A = new int[] {-100, -100, -1};
+    expected = 1;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
   public void Test200() {
     int max = 200;
-    A = new int[max];
-    for (int i = 0; i < max; i++) {
-      A[i] = 100;
-    }
-    expected = 0;
-    actual = s.solution(A);
-    assertEquals(getFailMsg(), expected, actual);
-  }
-
-  @Test
-  public void Test1000() {
-    int max = 1000;
-    A = new int[max];
-    for (int i = 0; i < max; i++) {
-      A[i] = 100;
-    }
-    expected = 0;
-    actual = s.solution(A);
-    assertEquals(getFailMsg(), expected, actual);
-  }
-
-  @Test
-  public void Test3000() {
-    int max = 3000;
     A = new int[max];
     for (int i = 0; i < max; i++) {
       A[i] = 100;
@@ -92,18 +76,6 @@ public class TestSolution {
       A[i] = 100;
     }
     expected = 100;
-    actual = s.solution(A);
-    assertEquals(getFailMsg(), expected, actual);
-  }
-
-  @Test
-  public void Test5000() {
-    int max = 5000;
-    A = new int[max];
-    for (int i = 0; i < max; i++) {
-      A[i] = 100;
-    }
-    expected = 0;
     actual = s.solution(A);
     assertEquals(getFailMsg(), expected, actual);
   }
