@@ -59,19 +59,6 @@ class Solution {
       }
     }
 
-    negAbs = offset + 1;
-    for (int i = 1; i <= offset; i++) {
-      if (count2[index][offset - i] == mark) {
-        negAbs = i;
-
-        break;
-      }
-    }
-
-    if (negAbs < posAbs) {
-      return negAbs;
-    }
-
     return posAbs;
   }
 }
