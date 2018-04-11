@@ -29,7 +29,7 @@ class Solution3 {
 
     for (int i = 0; i < N; i++) {
       a = posA[i];
-      for (int j = 0; j <= perfectGoal; j++) {
+      for (int j = perfectGoal; j >= 0; j--) {
         if (count[j] == 1 && j + a <= perfectGoal) {
           count[j + a] = 1;
         }
