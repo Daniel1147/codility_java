@@ -64,20 +64,16 @@ class Solution4 {
   }
 
   private void runDp() {
-    int range, move;
+    int range;
     for (range = 1; range <= max; range++) {
       if (count[range] == 0)
         continue;
 
-      for (int i = sum / 2; i >= 0; i--) {
+      for (int i = 0; i <= sum / 2; i++) {
         if (dp[i] >= 0) {
           dp[i] = count[range];
-          move = 0;
-
-          while (dp[i + move] > 0 && i + move + range <= sum / 2) {
-            dp[i + move + range] = dp[i + move] - 1;
-            move += range;
-          }
+        } else if (i - range >= 0 && dp[i - range] > 0) {
+          dp[i] = dp[i - range] - 1;
         }
       }
     }
