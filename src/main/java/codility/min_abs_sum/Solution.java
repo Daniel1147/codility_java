@@ -1,49 +1,59 @@
 package codility.min_abs_sum;
 
-import java.util.Arrays;
 
 class Solution {
   private final int maxA = 100;
-  private int offset, N, lastMin, lastMax, count2Read, count2Write, mark, nextMark;
-  private int[][] count2;
+  private int N, countRead, countWrite, mark, nextMark;
+  private int[][] count;
 
   public int solution(int[] A) {
     N = A.length;
-    offset = maxA * N;
 
-    count2 = new int[2][];
-    count2[0] = new int[offset * 2 + 1];
-    count2[1] = new int[offset * 2 + 1];
+    count = new int[2][];
+    count[0] = new int[maxA * 2];
+    count[1] = new int[maxA * 2];
 
-    lastMin = offset;
-    lastMax = offset;
-
-    count2[0][offset] = 1;
+    count[0][0] = 1;
 
     for (int i = 0; i < N; i++) {
       mark = i + 1;
       nextMark = mark + 1;
 
-      count2Read = i % 2;
-      count2Write = (i + 1) % 2;
+      countRead = i % 2;
+      countWrite = (i + 1) % 2;
 
-      for (int j = lastMin; j < offset * 2 + 1 && j <= lastMax; j++) {
-        if (count2[count2Read][j] == mark) {
-          count2[count2Write][j - A[i]] = nextMark;
-          count2[count2Write][j + A[i]] = nextMark;
+      for (int j = 0; j < maxA * 2; j++) {
+        if (count[countRead][j] == mark) {
+          markCount(countWrite, nextMark, j, A[i]);
         }
-      }
-
-      if (A[i] >= 0) {
-        lastMin = lastMin - A[i];
-        lastMax = lastMax + A[i];
-      } else {
-        lastMax = lastMax - A[i];
-        lastMin = lastMin + A[i];
       }
     }
 
     return minAbs();
+  }
+
+  private void markCount(int index, int nextMark, int start, int value) {
+    int result;
+
+    result = abs(start + value);
+    checkAndMark(index, nextMark, result);
+
+    result = abs(start - value);
+    checkAndMark(index, nextMark, result);
+  }
+
+  private void checkAndMark(int index, int nextMark, int position) {
+    if (position < maxA * 2) {
+      count[index][position] = nextMark;
+    }
+  }
+
+  private int abs(int n) {
+    if (n < 0) {
+      return n * -1;
+    }
+
+    return n;
   }
 
   private int minAbs() {
@@ -51,13 +61,13 @@ class Solution {
     int index = N % 2;
 
     mark = N + 1;
-    if (count2[index][offset] == mark) {
+    if (count[index][0] == mark) {
       return 0;
     }
 
-    posAbs = offset + 1;
-    for (int i = 1; i <= offset; i++) {
-      if (count2[index][i + offset] == mark) {
+    posAbs = maxA * 2;
+    for (int i = 1; i < maxA * 2; i++) {
+      if (count[index][i] == mark) {
         posAbs = i;
 
         break;
