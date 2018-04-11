@@ -80,6 +80,19 @@ public class TestSolution {
     assertEquals(getFailMsg(), expected, actual);
   }
 
+  @Test
+  public void Test19999() {
+    int max = 19999;
+    int value = 7;
+    A = new int[max];
+    for (int i = 0; i < max; i++) {
+      A[i] = value;
+    }
+    expected = value;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
   private String getFailMsg() {
     return String.format("input: A %s\n", Arrays.toString(A));
   }
