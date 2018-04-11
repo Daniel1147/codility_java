@@ -9,11 +9,11 @@ import org.junit.Test;
 public class TestSolution {
   private int[] A;
   private int expected, actual;
-  private Solution s;
+  private Solution4 s;
 
   @Before
   public void setUp() {
-    s = new Solution();
+    s = new Solution4();
   }
 
   @Test
@@ -50,8 +50,72 @@ public class TestSolution {
 
   @Test
   public void Test3() {
+    A = new int[] {2, 3, 4, 6};
+    expected = 1;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test4() {
+    A = new int[] {2};
+    expected = 2;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test5() {
+    A = new int[] {2, 5};
+    expected = 3;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test6() {
+    A = new int[] {2, 5 -2};
+    expected = 1;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test7() {
+    A = new int[] {3, 3, 4};
+    expected = 2;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test8() {
+    A = new int[] {5, 5, 10, 5};
+    expected = 5;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void Test9() {
+    A = new int[] {3, 1};
+    expected = 2;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void TestNegative1() {
     A = new int[] {-100, -100, -1};
     expected = 1;
+    actual = s.solution(A);
+    assertEquals(getFailMsg(), expected, actual);
+  }
+
+  @Test
+  public void TestNegative2() {
+    A = new int[] {-1, -2, -3, -4};
+    expected = 0;
     actual = s.solution(A);
     assertEquals(getFailMsg(), expected, actual);
   }
