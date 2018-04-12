@@ -4,9 +4,11 @@ set -u
 
 source ./config.sh
 
-# TCLASS: target test java file
+if [ -z ${TEST_CLASS+x} ]; then
+    read -p $'target test (TEST_CLASS):\n' TEST_CLASS
+fi
 
-IFS='.' read -ra PACKAGE <<< "$TCLASS"
+IFS='.' read -ra PACKAGE <<< "$TEST_CLASS"
 
 ROOT_PACKAGE=${PACKAGE[0]}
 SUB_PACKAGE=${PACKAGE[1]}
