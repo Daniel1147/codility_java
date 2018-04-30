@@ -1,0 +1,16 @@
+plugins {
+    id 'com.scuilion.syntastic' version '0.3.8'
+    id 'java'
+}
+
+description 'Daniel1147\'s codility project'
+version '0.0.1'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.+'
+}
+
