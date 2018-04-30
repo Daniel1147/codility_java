@@ -1,12 +1,13 @@
 package codility.template;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestSolutionTemplate {
+public class TestSolution {
   private int expected, actual;
   private Solution s;
 
@@ -16,10 +17,9 @@ public class TestSolutionTemplate {
   }
 
   @Test
-  public void TestTemplate() {
-    expected = 0;
+  public void TestCompile() {
     actual = s.solution();
-    assertEquals(getFailMsg(), expected, actual);
+    assertTrue(getFailMsg(), true);
   }
 
   private String getFailMsg() {

@@ -1,9 +1,13 @@
 package codility.hello_world;
 
-class TestHelloWorld {
-  public static void main(String[] args) {
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class TestHelloWorld {
+  @Test
+  public void testGet() {
     HelloWorld helloWorld = new HelloWorld();
 
-    helloWorld.run();
+    assertEquals("Hello World!", helloWorld.get());
   }
 }

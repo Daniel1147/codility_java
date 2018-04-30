@@ -1,2 +1,5 @@
 *.swp
 *.class
+.syntastic_javac_config
+.gradle
+build
