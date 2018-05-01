@@ -18,3 +18,10 @@ sourceSets {
     main.java.srcDir 'src/main/java'
     test.java.srcDir 'src/test/java'
 }
+
+test {
+    testLogging {
+        outputs.upToDateWhen {false}
+        showStandardStreams = true
+    }
+}
