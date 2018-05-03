@@ -33,7 +33,8 @@ class Solution {
           break;
         }
       }
-      lastA = currentA + 1;
+      if (currentA < availableANum)
+        lastA = currentA + 1;
 
       ansNum = availableANum - lastA;
 
@@ -77,7 +78,7 @@ class Solution {
       }
     }
 
-    // System.out.printf("squre min index => %d, square list num => %d\n", currentSquare, squareListNum);
+    // System.out.printf("squre min index => %d, square list num => %d, ans => %d\n", currentSquare, squareListNum, ans);
 
     ans += squareListNum - currentSquare;
 
