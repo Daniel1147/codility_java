@@ -23,12 +23,20 @@ public class TestSolution {
     assertTrue(true);
   }
 
+  @Test
+  public void TestCodility1() {
+    A = new int[] {1, 2, 5, 1, 1, 2, 3, 5, 1};
+    X = 5;
+    expected = 2;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A, X);
     assertEquals(getFailMsg(), expected, actual);
   }
 
   private String getFailMsg() {
-    return "";
+    return String.format("intput: A => %s, X => %d\n", Arrays.toString(A), X);
   }
 }
