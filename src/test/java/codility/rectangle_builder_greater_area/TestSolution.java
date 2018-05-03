@@ -40,6 +40,14 @@ public class TestSolution {
   }
 
   @Test
+  public void TestCodility3() {
+    A = new int[] {2, 3, 2, 3, 2, 3, 2, 3};
+    X = 9;
+    expected = 1;
+    myTest();
+  }
+
+  @Test
   public void TestSquare1() {
     A = new int[] {3, 3};
     X = 9;
