@@ -44,8 +44,42 @@ class Solution {
         return -1;
     }
 
-    if (squareRootAvailabe())
-      ans++;
+    int[] squareList = new int[A.length / 4];
+    int squareListNum, count, lastNum;
+
+    lastNum = A[0];
+    count = 1;
+    squareListNum = 0;
+
+    for (int i = 1; i < A.length; i++) {
+      if (A[i] != lastNum) {
+        lastNum = A[i];
+        count = 1;
+        continue;
+      }
+
+      count++;
+      if (count == 4) {
+        squareList[squareListNum] = lastNum;
+        squareListNum++;
+      }
+
+    }
+
+    // System.out.printf("square list => %s\n", Arrays.toString(squareList));
+
+    int currentSquare;
+    double piece;
+    for (currentSquare = 0; currentSquare < squareListNum; currentSquare++) {
+      piece = (double) squareList[currentSquare];
+      if (piece * piece >= (double)X) {
+        break;
+      }
+    }
+
+    // System.out.printf("squre min index => %d, square list num => %d\n", currentSquare, squareListNum);
+
+    ans += squareListNum - currentSquare;
 
     if (ans > maxResult)
       return -1;
@@ -75,23 +109,5 @@ class Solution {
       lastA = A[i];
       count = 1;
     }
-  }
-
-  private boolean squareRootAvailabe() {
-    double sqrt = Math.sqrt(X);
-    int iSqrt = (int)sqrt;
-    if (iSqrt * iSqrt != X)
-      return false;
-
-    int count = 0;
-    for (int i = 0; i < A.length; i++) {
-      if (A[i] == iSqrt)
-        count++;
-
-      if (count >= 4)
-        return true;
-    }
-
-    return false;
   }
 }
