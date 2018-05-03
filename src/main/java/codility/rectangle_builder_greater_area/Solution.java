@@ -27,14 +27,7 @@ class Solution {
     lastA = availableANum - 1;
     ans = 0;
     for (startA = 0; startA < availableANum; startA++) {
-      for (currentA = lastA; currentA > startA; currentA--) {
-        area = (double)availableA[startA] * (double)availableA[currentA];
-        if (area < X) {
-          break;
-        }
-      }
-      if (currentA < availableANum)
-        lastA = currentA + 1;
+      lastA = lastAvailableFence(startA, lastA);
 
       ansNum = availableANum - lastA;
 
@@ -110,5 +103,24 @@ class Solution {
       lastA = A[i];
       count = 1;
     }
+  }
+
+  private int lastAvailableFence(int fence1Index, int startSearch) {
+    int fence2Index;
+    double area, fence1Length, fence2Length;
+    fence1Length = availableA[fence1Index];
+
+    for (fence2Index = startSearch; fence2Index > fence1Index; fence2Index--) {
+      fence2Length = (double) availableA[fence2Index];
+      area = fence1Length * fence2Length;
+      if (area < X) {
+        break;
+      }
+    }
+
+    if (fence2Index < availableANum)
+      return fence2Index + 1;
+
+    return fence2Index;
   }
 }
