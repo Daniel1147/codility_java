@@ -31,6 +31,22 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void TestSquare1() {
+    A = new int[] {3, 3};
+    X = 9;
+    expected = 0;
+    myTest();
+  }
+
+  @Test
+  public void TestSquare2() {
+    A = new int[] {3, 3, 3, 3};
+    X = 9;
+    expected = 1;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A, X);
     assertEquals(getFailMsg(), expected, actual);
