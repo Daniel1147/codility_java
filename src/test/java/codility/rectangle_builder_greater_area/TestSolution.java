@@ -63,6 +63,30 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void Test1() {
+    A = new int[] {1, 2, 2, 3, 3, 1, 3, 3};
+    X = 2;
+    expected = 4;
+    myTest();
+  }
+
+  @Test
+  public void Test2() {
+    A = new int[] {1, 1, 2, 2, 3, 3, 5, 5, 8, 8, 13, 13};
+    X = 2;
+    expected = 15;
+    myTest();
+  }
+
+  @Test
+  public void Test3() {
+    A = new int[] {1, 1, 2, 2, 2, 5, 5, 7, 8, 8, 9, 9, 10, 10, 11, 13, 13, 14, 14, 14, 16, 16, 16};
+    X = 1;
+    expected = 36;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A, X);
     assertEquals(getFailMsg(), expected, actual);
