@@ -32,6 +32,24 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void Test2() {
+    K = 0;
+    C = new int[] {2, 2, 3, 3, 4, 4};
+    D = new int[] {5};
+    expected = 3;
+    myTest();
+  }
+
+  @Test
+  public void Test3() {
+    K = 2;
+    C = new int[] {2, 3, 4};
+    D = new int[] {2, 3, 4};
+    expected = 2;
+    myTest();
+  }
+
   // @Test
   // public void TestCodility1() {
   //   K = 2;
