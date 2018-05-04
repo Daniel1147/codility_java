@@ -41,6 +41,18 @@ public class TestIntTree {
     assertArrayEquals(errorMsg, expected, postOrder);
   }
 
+  @Test
+  public void TestLevelOrder() {
+    IntTree root = sample1();
+    int[] expected, levelOrder;
+
+    expected = new int[] {1, 2, 3, 4, 5, 6};
+    levelOrder = root.levelOrder();
+
+    String errorMsg = String.format("expected => %s, actual => %s\n", Arrays.toString(expected), Arrays.toString(levelOrder));
+    assertArrayEquals(errorMsg, expected, levelOrder);
+  }
+
   private IntTree sample1() {
     IntTree root = new IntTree(1);
     root.l = new IntTree(2);
