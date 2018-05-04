@@ -87,6 +87,14 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void Test4() {
+    A = new int[] {1, 2, 5, 1, 1, 2, 3, 5, 1};
+    X = 6;
+    expected = 1;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A, X);
     assertEquals(getFailMsg(), expected, actual);
