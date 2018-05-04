@@ -50,9 +50,14 @@ class Solution {
     while (K > 0 && iter.hasNext()) {
       entry = iter.next();
       color = entry.getKey();
-      if (dirtySock.get(color) != null && dirtySock.get(color) > 0) {
+
+      if (entry.getValue() <= 0)
+        continue;
+
+      num = dirtySock.get(color);
+      if (num != null && num > 0) {
         K--;
-        dirtySock.put(color, dirtySock.get(color) - 1);
+        dirtySock.put(color, num - 1);
         count++;
       }
     }
