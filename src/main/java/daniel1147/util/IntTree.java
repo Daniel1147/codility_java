@@ -7,8 +7,58 @@ public class IntTree {
   public IntTree l;
   public IntTree r;
 
+  private static final String nullNode = "x";
+
   public IntTree(int x) {
     this.x = x;
+  }
+
+  public static IntTree levelOrderConstruct(String s) {
+    if (s.equals(""))
+      return null;
+
+    String[] nodeStrList;
+    Queue<String> q;
+
+    nodeStrList = s.split(" ");
+    q = new ArrayDeque<String>(Arrays.asList(nodeStrList));
+
+    String nodeStr;
+    IntTree root, node, parentNode;
+    Queue<IntTree> nodeQ;
+
+    nodeQ = new ArrayDeque<IntTree>();
+    nodeStr = q.poll();
+    if (nodeStr.equals(nullNode))
+      return null;
+
+    root = new IntTree(Integer.parseInt(nodeStr));
+    nodeQ.add(root);
+    while(!q.isEmpty()) {
+      nodeStr = q.poll();
+      parentNode = nodeQ.poll();
+      if (!nodeStr.equals(nullNode)) {
+        node = new IntTree(Integer.parseInt(nodeStr));
+        parentNode.l = node;
+        nodeQ.add(node);
+      } else {
+        parentNode.l = null;
+      }
+
+      if (q.isEmpty())
+        break;
+
+      nodeStr = q.poll();
+      if (!nodeStr.equals(nullNode)) {
+        node = new IntTree(Integer.parseInt(nodeStr));
+        parentNode.r = node;
+        nodeQ.add(node);
+      } else {
+        parentNode.r = null;
+      }
+    }
+
+    return root;
   }
 
   public int[] preOrder() {
