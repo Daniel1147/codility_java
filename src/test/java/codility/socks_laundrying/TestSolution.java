@@ -50,6 +50,33 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void Test4() {
+    K = 4;
+    C = new int[] {2, 3, 4};
+    D = new int[] {2, 3, 4};
+    expected = 3;
+    myTest();
+  }
+
+  @Test
+  public void Test5() {
+    K = 4;
+    C = new int[] {1};
+    D = new int[] {2, 3, 4, 2};
+    expected = 1;
+    myTest();
+  }
+
+  @Test
+  public void Test6() {
+    K = 2;
+    C = new int[] {1};
+    D = new int[] {2, 3, 4, 5, 2, 3, 4, 5};
+    expected = 1;
+    myTest();
+  }
+
   // @Test
   // public void TestCodility1() {
   //   K = 2;
