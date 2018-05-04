@@ -11,6 +11,17 @@ public class IntTree {
     this.x = x;
   }
 
+  public int[] preOrder() {
+    int[] result, left, right;
+
+    left = (l != null) ? l.preOrder() : new int[0];
+    right = (r != null) ? r.preOrder() : new int[0];
+
+    result = concat(new int[]{x}, left, right);
+
+    return result;
+  }
+
   public int[] inOrder() {
     int[] result, left, right;
 
