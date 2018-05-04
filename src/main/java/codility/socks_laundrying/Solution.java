@@ -57,6 +57,25 @@ class Solution {
       }
     }
 
+    // find spare pair of dirty sock
+    iter = dirtySock.entrySet().iterator();
+    while (K > 1 && iter.hasNext()) {
+      entry = iter.next();
+      color = entry.getKey();
+      num = entry.getValue();
+      if (num != null && num > 1) {
+        pairNum = num / 2;
+
+        if (K < pairNum * 2) {
+          pairNum = K / 2;
+        }
+
+        K -= pairNum * 2;
+        count += pairNum;
+        dirtySock.put(color, num - pairNum * 2);
+      }
+    }
+
     return count;
   }
 
