@@ -45,17 +45,17 @@ public class IntTree {
   }
 
   public int[] levelOrder() {
-    ArrayDeque <IntTree>q;
-    ArrayDeque <Integer> result;
+    Queue<IntTree> q;
+    ArrayDeque<Integer> result;
 
     q = new ArrayDeque<IntTree>();
     result = new ArrayDeque<Integer>();
 
-    q.addFirst(this);
+    q.add(this);
 
     IntTree t;
     while (!q.isEmpty()) {
-      t = q.pop();
+      t = q.poll();
 
       if (t.l != null)
         q.add(t.l);
