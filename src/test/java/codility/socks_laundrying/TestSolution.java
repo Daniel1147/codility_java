@@ -104,14 +104,14 @@ public class TestSolution {
     myTest();
   }
 
-  // @Test
-  // public void TestCodility1() {
-  //   K = 2;
-  //   C = new int[] {1, 2, 1, 1};
-  //   D = new int[] {1, 4, 3, 2, 4};
-  //   expected = 3;
-  //   myTest();
-  // }
+  @Test
+  public void TestCodility1() {
+    K = 2;
+    C = new int[] {1, 2, 1, 1};
+    D = new int[] {1, 4, 3, 2, 4};
+    expected = 3;
+    myTest();
+  }
 
   private void myTest() {
     actual = s.solution(K, C, D);
