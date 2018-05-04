@@ -6,6 +6,18 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class TestIntTree {
   @Test
+  public void TestPreOrder() {
+    IntTree root = sample1();
+    int[] expected, preOrder;
+
+    expected = new int[] {1, 2, 4, 5, 3, 6};
+    preOrder = root.preOrder();
+
+    String errorMsg = String.format("expected => %s, actual => %s\n", Arrays.toString(expected), Arrays.toString(preOrder));
+    assertArrayEquals(errorMsg, expected, preOrder);
+  }
+
+  @Test
   public void TestInOrder() {
     IntTree root = sample1();
     int[] expected, inOrder;
