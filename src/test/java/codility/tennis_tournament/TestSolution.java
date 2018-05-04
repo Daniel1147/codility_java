@@ -22,6 +22,30 @@ public class TestSolution {
   }
 
   @Test
+  public void Test1() {
+    P = 0;
+    C = 5;
+    expected = 0;
+    myTest();
+  }
+
+  @Test
+  public void Test2() {
+    P = 5;
+    C = 0;
+    expected = 0;
+    myTest();
+  }
+
+  @Test
+  public void Test3() {
+    P = 4;
+    C = 2;
+    expected = 2;
+    myTest();
+  }
+
+  @Test
   public void TestCodility1() {
     P = 10;
     C = 3;
