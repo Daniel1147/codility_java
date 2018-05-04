@@ -24,6 +24,14 @@ public class TestSolution {
   }
 
   @Test
+  public void TestEmpty() {
+    t = IntTree.levelOrderConstruct("");
+    expected = -1;
+
+    myTest();
+  }
+
+  @Test
   public void TestCodility1() {
     t = IntTree.levelOrderConstruct("5 3 10 20 21 1");
     expected = 2;
@@ -37,6 +45,13 @@ public class TestSolution {
   }
 
   private String getFailMsg() {
-    return String.format("input: %s\n", Arrays.toString(t.inOrder()));
+    String inputStr;
+
+    if (t == null)
+      inputStr = "[]";
+    else
+      inputStr = Arrays.toString(t.inOrder());
+
+    return String.format("input: %s\n", inputStr);
   }
 }
