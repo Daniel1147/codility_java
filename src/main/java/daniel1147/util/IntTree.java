@@ -1,6 +1,6 @@
 package daniel1147.util;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class IntTree {
   public int x;
@@ -42,6 +42,38 @@ public class IntTree {
     result = concat(left, right, new int[] {x});
 
     return result;
+  }
+
+  public int[] levelOrder() {
+    ArrayDeque <IntTree>q;
+    ArrayDeque <Integer> result;
+
+    q = new ArrayDeque<IntTree>();
+    result = new ArrayDeque<Integer>();
+
+    q.addFirst(this);
+
+    IntTree t;
+    while (!q.isEmpty()) {
+      t = q.pop();
+
+      if (t.l != null)
+        q.add(t.l);
+
+      if (t.r != null)
+        q.add(t.r);
+
+      result.add(t.x);
+    }
+
+    int[] output;
+    output = new int[result.size()];
+    Iterator<Integer> iter = result.iterator();
+
+    for (int i = 0; iter.hasNext();i++)
+      output[i] = iter.next();
+
+    return output;
   }
 
   private int[] concat(int[] a, int[] b, int[] c) {
