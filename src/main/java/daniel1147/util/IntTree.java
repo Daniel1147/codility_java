@@ -17,7 +17,7 @@ public class IntTree {
     left = (l != null) ? l.preOrder() : new int[0];
     right = (r != null) ? r.preOrder() : new int[0];
 
-    result = concat(new int[]{x}, left, right);
+    result = concat(new int[] {x}, left, right);
 
     return result;
   }
@@ -28,7 +28,7 @@ public class IntTree {
     left = (l != null) ? l.inOrder() : new int[0];
     right = (r != null) ? r.inOrder() : new int[0];
 
-    result = concat(left, new int[]{x}, right);
+    result = concat(left, new int[] {x}, right);
 
     return result;
   }
@@ -57,11 +57,9 @@ public class IntTree {
     while (!q.isEmpty()) {
       t = q.poll();
 
-      if (t.l != null)
-        q.add(t.l);
+      if (t.l != null) q.add(t.l);
 
-      if (t.r != null)
-        q.add(t.r);
+      if (t.r != null) q.add(t.r);
 
       result.add(t.x);
     }
@@ -70,8 +68,7 @@ public class IntTree {
     output = new int[result.size()];
     Iterator<Integer> iter = result.iterator();
 
-    for (int i = 0; iter.hasNext();i++)
-      output[i] = iter.next();
+    for (int i = 0; iter.hasNext(); i++) output[i] = iter.next();
 
     return output;
   }
