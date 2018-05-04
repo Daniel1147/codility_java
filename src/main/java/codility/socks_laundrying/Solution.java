@@ -53,6 +53,7 @@ class Solution {
       if (dirtySock.get(color) != null && dirtySock.get(color) > 0) {
         K--;
         dirtySock.put(color, dirtySock.get(color) - 1);
+        count++;
       }
     }
 
