@@ -46,10 +46,10 @@ public class IntTree {
 
   public int[] levelOrder() {
     Queue<IntTree> q;
-    ArrayDeque<Integer> result;
+    List<Integer> result;
 
     q = new ArrayDeque<IntTree>();
-    result = new ArrayDeque<Integer>();
+    result = new ArrayList<Integer>();
 
     q.add(this);
 
