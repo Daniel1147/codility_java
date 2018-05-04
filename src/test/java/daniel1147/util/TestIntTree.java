@@ -6,18 +6,6 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class TestIntTree {
   @Test
-  public void TestPostOrder() {
-    IntTree root = sample1();
-    int[] expected, postOrder;
-
-    expected = new int[] {4, 5, 2, 6, 3, 1};
-    postOrder = root.postOrder();
-
-    String errorMsg = String.format("expected => %s, actual => %s\n", Arrays.toString(expected), Arrays.toString(postOrder));
-    assertArrayEquals(errorMsg, expected, postOrder);
-  }
-
-  @Test
   public void TestInOrder() {
     IntTree root = sample1();
     int[] expected, inOrder;
@@ -27,6 +15,18 @@ public class TestIntTree {
 
     String errorMsg = String.format("expected => %s, actual => %s\n", Arrays.toString(expected), Arrays.toString(inOrder));
     assertArrayEquals(errorMsg, expected, inOrder);
+  }
+
+  @Test
+  public void TestPostOrder() {
+    IntTree root = sample1();
+    int[] expected, postOrder;
+
+    expected = new int[] {4, 5, 2, 6, 3, 1};
+    postOrder = root.postOrder();
+
+    String errorMsg = String.format("expected => %s, actual => %s\n", Arrays.toString(expected), Arrays.toString(postOrder));
+    assertArrayEquals(errorMsg, expected, postOrder);
   }
 
   private IntTree sample1() {
