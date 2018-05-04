@@ -32,6 +32,14 @@ public class TestSolution {
   }
 
   @Test
+  public void Test1() {
+    t = IntTree.levelOrderConstruct("1 2 3 4 x x x 5");
+    expected = 3;
+
+    myTest();
+  }
+
+  @Test
   public void TestCodility1() {
     t = IntTree.levelOrderConstruct("5 3 10 20 21 1");
     expected = 2;
