@@ -105,6 +105,15 @@ public class TestSolution {
   }
 
   @Test
+  public void Test10() {
+    K = 50;
+    C = new int[] {1, 1};
+    D = new int[] {1};
+    expected = 1;
+    myTest();
+  }
+
+  @Test
   public void TestCodility1() {
     K = 2;
     C = new int[] {1, 2, 1, 1};
