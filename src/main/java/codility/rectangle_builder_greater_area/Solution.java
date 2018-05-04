@@ -24,14 +24,14 @@ class Solution {
     int lastA, startA, currentA, ans, ansNum;
     double area;
 
-    lastA = availableANum - 1;
+    lastA = availableANum;
     ans = 0;
     for (startA = 0; startA < availableANum; startA++) {
       lastA = lastAvailableFence(startA, lastA);
 
-      ansNum = availableANum - lastA;
-
       // System.out.printf("start => %d, last => %d\n", startA, lastA);
+
+      ansNum = availableANum - lastA;
 
       ans += ansNum;
       if (ans > maxResult)
@@ -105,22 +105,36 @@ class Solution {
     }
   }
 
-  private int lastAvailableFence(int fence1Index, int startSearch) {
+  /**
+   * find the smallest indext that is bigger than fence and fence1Index * fence2Index >= X
+   */
+  private int lastAvailableFence(int fence1Index, int lastSearch) {
+    double fence1Length, fence2Length;
     int fence2Index;
-    double area, fence1Length, fence2Length;
-    fence1Length = availableA[fence1Index];
 
-    for (fence2Index = startSearch; fence2Index > fence1Index; fence2Index--) {
-      fence2Length = (double) availableA[fence2Index];
-      area = fence1Length * fence2Length;
-      if (area < X) {
+    fence2Index = lastSearch - 1;
+    if (fence2Index <= fence1Index)
+      fence2Index = fence1Index + 1;
+
+    if (fence2Index >= availableANum)
+      return availableANum;
+
+    while (fence2Index > fence1Index) {
+      if (!availableFence(availableA[fence1Index], availableA[fence2Index])) {
         break;
       }
-    }
 
-    if (fence2Index < availableANum)
-      return fence2Index + 1;
+      fence2Index--;
+    }
+    fence2Index += 1;
 
     return fence2Index;
+  }
+
+  private boolean availableFence(double fence1, double fence2) {
+    if (fence1 * fence2 >= X)
+      return true;
+
+    return false;
   }
 }
