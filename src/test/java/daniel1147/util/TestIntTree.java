@@ -91,12 +91,8 @@ public class TestIntTree {
   }
 
   private IntTree sample1() {
-    IntTree root = new IntTree(1);
-    root.l = new IntTree(2);
-    root.l.l = new IntTree(4);
-    root.l.r = new IntTree(5);
-    root.r = new IntTree(3);
-    root.r.l = new IntTree(6);
+    IntTree root;
+    root = IntTree.levelOrderConstruct("1 2 3 4 5 6");
 
     return root;
   }
