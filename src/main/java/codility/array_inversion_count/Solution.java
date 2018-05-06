@@ -45,7 +45,7 @@ class Solution {
     indexRight = 0;
 
     while (indexLeft < lenLeft || indexRight < lenRight) {
-      indexSum = indexLeft + indexRight;
+      indexSum = indexLeft + indexRight + indexStart;
       if (indexLeft == lenLeft) {
         // insert from right
         numList[indexSum] = numListRight[indexRight];
