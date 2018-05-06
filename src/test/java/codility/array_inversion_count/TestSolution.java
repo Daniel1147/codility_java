@@ -43,6 +43,13 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void TestCodility() {
+    A = new int[] {-1, 6, 3, 4, 7, 4};
+    expected = 4;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A);
     assertEquals(getFailMsg(), expected, actual);
