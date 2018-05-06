@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ROOT_PACKAGE=codility
+# ROOT_PACKAGE=leetcode
 DESC=classes
 
 TEST_DIR=src/test
