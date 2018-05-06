@@ -22,6 +22,27 @@ public class TestSolution {
     assertTrue(true);
   }
 
+  @Test
+  public void TestEmpty() {
+    A = new int[0];
+    expected = 0;
+    myTest();
+  }
+
+  @Test
+  public void Test1() {
+    A = new int[] {1, 2, 3};
+    expected = 0;
+    myTest();
+  }
+
+  @Test
+  public void Test2() {
+    A = new int[] {3, 2, 1};
+    expected = 3;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.solution(A);
     assertEquals(getFailMsg(), expected, actual);
