@@ -3,6 +3,9 @@ package codility.array_inversion_count;
 import java.util.*;
 
 class Solution {
+  private final static int MAX_COUNT = 1000000000;
+  private final static int EXCESSIVE_COUNT = -1;
+
   public int solution(int[] A) {
     int ans;
 
@@ -25,9 +28,16 @@ class Solution {
     // System.out.println("indexMid => " + indexMid);
 
     countLeft = count(numList, indexStart, indexMid);
+    if (countLeft == EXCESSIVE_COUNT)
+      return EXCESSIVE_COUNT;
+
     countRight = count(numList, indexMid + 1, indexEnd);
+    if (countRight == EXCESSIVE_COUNT)
+      return EXCESSIVE_COUNT;
 
     result = countLeft + countRight;
+    if (result > MAX_COUNT)
+      return EXCESSIVE_COUNT;
 
     int[] numListLeft, numListRight;
     int lenLeft, lenRight, indexLeft, indexRight, indexSum;
@@ -52,6 +62,9 @@ class Solution {
         indexRight++;
         result += countLeft;
 
+        if (result > MAX_COUNT)
+          return EXCESSIVE_COUNT;
+
         continue;
       }
 
@@ -68,6 +81,9 @@ class Solution {
         numList[indexSum] = numListRight[indexRight];
         indexRight++;
         result += countLeft;
+
+        if (result > MAX_COUNT)
+          return EXCESSIVE_COUNT;
 
         continue;
       }
