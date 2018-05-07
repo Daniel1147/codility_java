@@ -35,6 +35,7 @@ class Solution {
       return;
 
     inorderTraverse(node.left);
+    if (errorCount >= 2) return;
 
     if (!firstNode && lastNode.val > node.val) {
       // System.out.printf("node1 => %d, node2 => %d\n", lastNode.val, node.val);
@@ -49,6 +50,8 @@ class Solution {
 
     lastNode = node;
     firstNode = false;
+
+    if (errorCount >= 2) return;
 
     inorderTraverse(node.right);
   }
