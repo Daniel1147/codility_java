@@ -10,12 +10,22 @@ class Solution {
     N = height.length;
     indexLeft = 0;
     indexRight = N - 1;
+    maxLeft = height[indexLeft] - 1;
+    maxRight = height[indexRight] - 1;
 
     while (indexLeft < indexRight) {
-      currentArea = area(height, indexLeft, indexRight);
-      if (max < currentArea)
-        max = currentArea;
+      if (height[indexLeft] > maxLeft || height[indexRight] > maxRight) {
+        currentArea = area(height, indexLeft, indexRight);
 
+        if (height[indexLeft] > maxLeft)
+          maxLeft = height[indexLeft];
+
+        if (height[indexRight] > maxRight)
+          maxLeft = height[indexRight];
+
+        if (max < currentArea)
+          max = currentArea;
+      }
       if (height[indexLeft] < height[indexRight])
         indexLeft++;
       else
