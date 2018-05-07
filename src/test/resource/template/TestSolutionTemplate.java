@@ -17,7 +17,7 @@ public class TestSolution {
   }
 
   @Test
-  public void TestCompile() {
+  public void testCompile() {
     assertTrue(true);
   }
 
