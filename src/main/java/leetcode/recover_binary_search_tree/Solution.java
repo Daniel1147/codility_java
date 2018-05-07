@@ -18,10 +18,10 @@ class Solution {
   int errorCount, tmp;
 
   public void recoverTree(TreeNode root) {
-    firstNode = true;
     errorCount = 0;
 
     // search
+    lastNode = new TreeNode(Integer.MIN_VALUE);
     inorderTraverse(root);
 
     // fix
@@ -37,19 +37,14 @@ class Solution {
     inorderTraverse(node.left);
     if (errorCount >= 2) return;
 
-    if (!firstNode && lastNode.val > node.val) {
+    if (lastNode.val > node.val) {
       // System.out.printf("node1 => %d, node2 => %d\n", lastNode.val, node.val);
       errorCount++;
-      if (errorCount == 1) {
-        error1 = lastNode;
-        error2 = node;
-      } else if (errorCount == 2) {
-        error2 = node;
-      }
+      if (error1 == null) error1 = lastNode;
+      error2 = node;
     }
 
     lastNode = node;
-    firstNode = false;
 
     if (errorCount >= 2) return;
 
