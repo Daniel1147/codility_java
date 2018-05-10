@@ -22,7 +22,6 @@ class Solution {
     //     "availableA => %s, availableANum => %d\n", Arrays.toString(availableA), availableANum);
 
     int lastA, startA, currentA, ans, ansNum;
-    double area;
 
     lastA = availableANum;
     ans = 0;
@@ -63,10 +62,10 @@ class Solution {
     // System.out.printf("square list => %s\n", Arrays.toString(squareList));
 
     int currentSquare;
-    double piece;
+    long piece;
     for (currentSquare = 0; currentSquare < squareListNum; currentSquare++) {
-      piece = (double) squareList[currentSquare];
-      if (piece * piece >= (double)X) {
+      piece = (long) squareList[currentSquare];
+      if (piece * piece >= (long)X) {
         break;
       }
     }
@@ -109,7 +108,7 @@ class Solution {
    * find the smallest indext that is bigger than fence and fence1Index * fence2Index >= X
    */
   private int lastAvailableFence(int fence1Index, int lastSearch) {
-    double fence1Length, fence2Length;
+    long fence1Length, fence2Length;
     int fence2Index;
 
     fence2Index = lastSearch - 1;
@@ -131,7 +130,7 @@ class Solution {
     return fence2Index;
   }
 
-  private boolean availableFence(double fence1, double fence2) {
+  private boolean availableFence(long fence1, long fence2) {
     if (fence1 * fence2 >= X)
       return true;
 
