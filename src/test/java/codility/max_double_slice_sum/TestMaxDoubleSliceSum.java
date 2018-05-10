@@ -1,27 +1,53 @@
 package codility.max_double_slice_sum;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class TestMaxDoubleSliceSum {
-  public static void main(String[] args) {
-    ArrayList<int[]> inputList = new ArrayList<int[]>();
+import org.junit.Test;
+import org.junit.Before;
 
-    // input 1
-    inputList.add(new int[] {3, 2, 6, -1, 4, 5, -1, 2});
+public class TestMaxDoubleSliceSum {
+  private Solution s;
+  private int expect, actual;
+  private int[] input;
 
-    // input 2
-    inputList.add(new int[] {0, 9, 0, 8, 0});
+  @Before
+  public void setUp() {
+    s = new Solution();
+  }
 
-    // input 3
-    inputList.add(new int[] {0, 17, 0, 0});
+  @Test
+  public void test1() {
+    input = new int[] {3, 2, 6, -1, 4, 5, -1, 2};
+    expect = 17;
+    myTest();
+  }
 
-    // input 4
-    inputList.add(new int[] {0, 0, 17, 0});
+  @Test
+  public void test2() {
+    input = new int[] {0, 9, 0, 8, 0};
+    expect = 17;
+    myTest();
+  }
 
-    Solution solution = new Solution();
-    for (int[] input : inputList) {
-      System.out.printf("input: %s\nans: %d\n", Arrays.toString(input), solution.solution(input));
-    }
+  @Test
+  public void test3() {
+    input = new int[] {0, 17, 0, 0};
+    expect = 17;
+    myTest();
+  }
+
+  @Test
+  public void test4() {
+    input = new int[] {0, 0, 17, 0};
+    expect = 17;
+    myTest();
+  }
+
+  private void myTest() {
+    actual = s.solution(input);
+    assertEquals(expect, actual);
   }
 }
