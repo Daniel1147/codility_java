@@ -27,4 +27,10 @@ public class TestSolution {
     assertEquals(-2, m.top());
     assertEquals(-2, m.getMin());
   }
+
+  @Test
+  public void test2() {
+    test1();
+    m.pop();
+  }
 }
