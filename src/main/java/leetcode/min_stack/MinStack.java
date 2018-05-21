@@ -46,8 +46,10 @@ class MinStack {
   }
 
   private void updateMin() {
-    if (s.empty())
+    if (s.empty()) {
       min = INVALID;
+      return;
+    }
 
     min = s.peek();
     for (Integer num : s) {
