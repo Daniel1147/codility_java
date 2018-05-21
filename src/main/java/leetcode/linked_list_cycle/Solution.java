@@ -4,17 +4,20 @@ import java.util.*;
 
 class Solution {
   public boolean hasCycle(ListNode head) {
-    ListNode falseNode, currentNode, nextNode;
+    ListNode slowNode, fastNode;
 
-    falseNode = new ListNode(0);
-    currentNode = head;
-    while(currentNode != null) {
-      if (currentNode.next == falseNode)
+    if (head == null)
+      return false;
+
+    slowNode = head;
+    fastNode = head;
+
+    while(fastNode.next != null && fastNode.next.next != null) {
+      fastNode = fastNode.next.next;
+      slowNode = slowNode.next;
+
+      if (fastNode == slowNode)
         return true;
-
-      nextNode = currentNode.next;
-      currentNode.next = falseNode;
-      currentNode = nextNode;
     }
 
     return false;
