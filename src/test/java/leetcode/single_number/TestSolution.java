@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestSolution {
+  private int[] nums;
   private int expected, actual;
   private Solution s;
 
@@ -21,11 +22,26 @@ public class TestSolution {
     assertTrue(true);
   }
 
+  @Test
+  public void testLeetcode1() {
+    nums = new int[] {2, 2, 1};
+    expected = 1;
+    myTest();
+  }
+
+  @Test
+  public void testLeetcode2() {
+    nums = new int[] {4, 1, 2, 1, 2};
+    expected = 4;
+    myTest();
+  }
+
   private void myTest() {
-    assertEquals(getFailMsg(), 0, 0);
+    actual = s.singleNumber(nums);
+    assertEquals(getFailMsg(), expected, actual);
   }
 
   private String getFailMsg() {
-    return "";
+    return String.format("nums => %s\n", Arrays.toString(nums));
   }
 }
