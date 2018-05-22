@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
-import daniel1147.util.IntLinkList;
+import leetcode.util.ListNode;
 
 public class TestSolution {
   private boolean expected, actual;
