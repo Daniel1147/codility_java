@@ -1,19 +1,19 @@
-package daniel1147.util;
+package codility.util;
 
 import java.util.*;
 
-public class IntTree {
+public class Tree {
   public int x;
-  public IntTree l;
-  public IntTree r;
+  public Tree l;
+  public Tree r;
 
   private static final String nullNode = "x";
 
-  public IntTree(int x) {
+  public Tree(int x) {
     this.x = x;
   }
 
-  public static IntTree levelOrderConstruct(String s) {
+  public static Tree levelOrderConstruct(String s) {
     if (s.equals(""))
       return null;
 
@@ -24,21 +24,21 @@ public class IntTree {
     q = new ArrayDeque<String>(Arrays.asList(nodeStrList));
 
     String nodeStr;
-    IntTree root, node, parentNode;
-    Queue<IntTree> nodeQ;
+    Tree root, node, parentNode;
+    Queue<Tree> nodeQ;
 
-    nodeQ = new ArrayDeque<IntTree>();
+    nodeQ = new ArrayDeque<Tree>();
     nodeStr = q.poll();
     if (nodeStr.equals(nullNode))
       return null;
 
-    root = new IntTree(Integer.parseInt(nodeStr));
+    root = new Tree(Integer.parseInt(nodeStr));
     nodeQ.add(root);
     while(!q.isEmpty()) {
       nodeStr = q.poll();
       parentNode = nodeQ.poll();
       if (!nodeStr.equals(nullNode)) {
-        node = new IntTree(Integer.parseInt(nodeStr));
+        node = new Tree(Integer.parseInt(nodeStr));
         parentNode.l = node;
         nodeQ.add(node);
       } else {
@@ -50,7 +50,7 @@ public class IntTree {
 
       nodeStr = q.poll();
       if (!nodeStr.equals(nullNode)) {
-        node = new IntTree(Integer.parseInt(nodeStr));
+        node = new Tree(Integer.parseInt(nodeStr));
         parentNode.r = node;
         nodeQ.add(node);
       } else {
@@ -95,15 +95,15 @@ public class IntTree {
   }
 
   public int[] levelOrder() {
-    Queue<IntTree> q;
+    Queue<Tree> q;
     List<Integer> result;
 
-    q = new ArrayDeque<IntTree>();
+    q = new ArrayDeque<Tree>();
     result = new ArrayList<Integer>();
 
     q.add(this);
 
-    IntTree t;
+    Tree t;
     while (!q.isEmpty()) {
       t = q.poll();
 

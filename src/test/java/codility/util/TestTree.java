@@ -1,14 +1,14 @@
-package daniel1147.util;
+package codility.util;
 
 import static org.junit.Assert.assertArrayEquals;
 
 import java.util.Arrays;
 import org.junit.Test;
 
-public class TestIntTree {
+public class TestTree {
   @Test
   public void TestPreOrder() {
-    IntTree root = sample1();
+    Tree root = sample1();
     int[] expected, preOrder;
 
     expected = new int[] {1, 2, 4, 5, 3, 6};
@@ -22,7 +22,7 @@ public class TestIntTree {
 
   @Test
   public void TestInOrder() {
-    IntTree root = sample1();
+    Tree root = sample1();
     int[] expected, inOrder;
 
     expected = new int[] {4, 2, 5, 1, 6, 3};
@@ -36,7 +36,7 @@ public class TestIntTree {
 
   @Test
   public void TestPostOrder() {
-    IntTree root = sample1();
+    Tree root = sample1();
     int[] expected, postOrder;
 
     expected = new int[] {4, 5, 2, 6, 3, 1};
@@ -51,7 +51,7 @@ public class TestIntTree {
 
   @Test
   public void TestLevelOrder() {
-    IntTree root = sample1();
+    Tree root = sample1();
     int[] expected, levelOrder;
 
     expected = new int[] {1, 2, 3, 4, 5, 6};
@@ -67,10 +67,10 @@ public class TestIntTree {
   @Test
   public void TestLevelOrderConstruct() {
     String input;
-    IntTree root;
+    Tree root;
 
     input = "1 2 3 4 5 6 x x x 7 8 x 9";
-    root = IntTree.levelOrderConstruct(input);
+    root = Tree.levelOrderConstruct(input);
     int[] expectInOrder, expectPreOrder, expectPostOrder, expectLevelOrder, actual;
 
     expectPreOrder = new int[] {1, 2, 4, 5, 7, 8, 3, 6, 9};
@@ -90,9 +90,9 @@ public class TestIntTree {
     assertArrayEquals(expectLevelOrder, actual);
   }
 
-  private IntTree sample1() {
-    IntTree root;
-    root = IntTree.levelOrderConstruct("1 2 3 4 5 6");
+  private Tree sample1() {
+    Tree root;
+    root = Tree.levelOrderConstruct("1 2 3 4 5 6");
 
     return root;
   }
