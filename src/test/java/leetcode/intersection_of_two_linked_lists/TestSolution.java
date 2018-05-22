@@ -35,6 +35,38 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testNull() {
+    ListNode.Factory f = new ListNode.Factory();
+
+    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+
+    headB = f.fromNumArray(new int[] {6, 7, 8});
+
+    expected = null;
+    myTest();
+  }
+
+  @Test
+  public void testNull1() {
+    headA = null;
+    headB = null;
+
+    expected = null;
+    myTest();
+  }
+
+  @Test
+  public void test1() {
+    ListNode.Factory f = new ListNode.Factory();
+
+    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headB = headA.next.next;
+
+    expected = headB;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.getIntersectionNode(headA, headB);
     assertEquals(getFailMsg(), expected, actual);
