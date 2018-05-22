@@ -1,7 +1,7 @@
 package leetcode.util;
 
 public class ListNode{
-  static class Factory {
+  public static class Factory {
     public ListNode fromNumArray(int[] nums) {
       ListNode head, current;
 
