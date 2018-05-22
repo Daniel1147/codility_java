@@ -36,6 +36,17 @@ public class TestSolution {
   }
 
   @Test
+  public void testLeetcode1() {
+    ListNode.Factory f = new ListNode.Factory();
+
+    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headB = null;
+
+    expected = null;
+    myTest();
+  }
+
+  @Test
   public void testNull() {
     ListNode.Factory f = new ListNode.Factory();
 
