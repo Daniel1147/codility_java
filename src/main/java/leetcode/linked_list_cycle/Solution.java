@@ -1,6 +1,7 @@
 package leetcode.linked_list_cycle;
 
 import java.util.*;
+import leetcode.util.ListNode;
 
 class Solution {
   public boolean hasCycle(ListNode head) {
