@@ -1,18 +1,18 @@
 package codility.tree_height;
 
 import java.util.*;
-import daniel1147.util.IntTree;
+import codility.util.Tree;
 
 class Solution {
-  public int solution(IntTree t) {
-    Queue<IntTree> q;
+  public int solution(Tree t) {
+    Queue<Tree> q;
     int levelCount, levelNodeCount, nextLevelCount;
-    IntTree node;
+    Tree node;
 
     if (t == null)
       return -1;
 
-    q = new ArrayDeque<IntTree>();
+    q = new ArrayDeque<Tree>();
     q.add(t);
     levelNodeCount = 1;
     nextLevelCount = 0;

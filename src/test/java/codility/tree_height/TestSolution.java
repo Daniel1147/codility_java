@@ -6,10 +6,10 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
-import daniel1147.util.IntTree;
+import codility.util.Tree;
 
 public class TestSolution {
-  private IntTree t;
+  private Tree t;
   private int expected, actual;
   private Solution s;
 
@@ -25,7 +25,7 @@ public class TestSolution {
 
   @Test
   public void TestEmpty() {
-    t = IntTree.levelOrderConstruct("");
+    t = Tree.levelOrderConstruct("");
     expected = -1;
 
     myTest();
@@ -33,7 +33,7 @@ public class TestSolution {
 
   @Test
   public void Test1() {
-    t = IntTree.levelOrderConstruct("1 2 3 4 x x x 5");
+    t = Tree.levelOrderConstruct("1 2 3 4 x x x 5");
     expected = 3;
 
     myTest();
@@ -41,7 +41,7 @@ public class TestSolution {
 
   @Test
   public void TestCodility1() {
-    t = IntTree.levelOrderConstruct("5 3 10 20 21 1");
+    t = Tree.levelOrderConstruct("5 3 10 20 21 1");
     expected = 2;
 
     myTest();
