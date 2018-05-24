@@ -42,10 +42,10 @@ public class TreeBuilder {
       nodeStr = q.poll();
       parentNode = nodeQ.poll();
       if (!nodeStr.equals(nullNode)) {
-        node = o.lAppend(parentNode, parseStr(nodeStr));
+        node = parentNode.lAppend(parseStr(nodeStr));
         nodeQ.add(node);
       } else {
-        o.lAppendNull(parentNode);
+        parentNode.lAppendNull();
       }
 
       if (q.isEmpty())
@@ -53,10 +53,10 @@ public class TreeBuilder {
 
       nodeStr = q.poll();
       if (!nodeStr.equals(nullNode)) {
-        node = o.rAppend(parentNode, parseStr(nodeStr));
+        node = parentNode.rAppend(parseStr(nodeStr));
         nodeQ.add(node);
       } else {
-        o.rAppendNull(parentNode);
+        parentNode.rAppendNull();
       }
     }
   }
