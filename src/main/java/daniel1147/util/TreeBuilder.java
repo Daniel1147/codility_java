@@ -10,6 +10,10 @@ public class TreeBuilder {
     this.o = o;
   }
 
+  public ITree getITree() {
+    return o.getITree();
+  }
+
   public void levelOrderConstruct(String s) {
     if (s.equals("")) {
       o.setRootNull();
