@@ -4,9 +4,10 @@ import leetcode.util.ListNode;
 
 class Solution {
   public boolean isPalindrome(ListNode head) {
-    int len, toNull, startRevert;
-    boolean skipMiddle;
-    ListNode leftHead, rightHead;
+    int len, leftHalfLen;
+    ListNode last, current, next, leftHead, rightHead;
+
+    // System.out.println("head => " + head);
 
     len = len(head);
 
@@ -14,20 +15,30 @@ class Solution {
       return true;
     }
 
-    toNull = len / 2;
+    leftHalfLen = len / 2;
+
+    last = null;
+    current = head;
+    next = head.next;
+
+    for (int i = 0; i < leftHalfLen; i++) {
+      current.next = last;
+      last = current;
+      current = next;
+      next = next.next;
+    }
+
+    leftHead = last;
 
     if (len % 2 == 0)
-      skipMiddle = false;
+      rightHead = current;
     else
-      skipMiddle = true;
+      rightHead = next;
 
-    leftHead = head;
-    rightHead = revert(head, toNull, skipMiddle);
+    // System.out.println("leftHead => " + leftHead);
+    // System.out.println("rightHead => " + rightHead);
 
-    // System.out.println("left head => " + leftHead);
-    // System.out.println("right head => " + rightHead);
-
-    while(leftHead != null && rightHead != null) {
+    while(leftHead != null) {
       if (leftHead.val != rightHead.val)
         return false;
 
@@ -49,33 +60,5 @@ class Solution {
     }
 
     return counter;
-  }
-
-  private ListNode revert(ListNode head, int toNull, boolean skipMiddle) {
-    int counter;
-    ListNode next, last, current;
-
-    for (int i = 0; i < toNull - 1; i++) {
-      head = head.next;
-    }
-
-    next = head.next;
-    head.next = null;
-
-    if (skipMiddle)
-      next = next.next;
-
-    last = null;
-    current = next;
-    while (current.next != null) {
-      next = current.next;
-      current.next = last;
-      last = current;
-      current = next;
-    }
-
-    current.next = last;
-
-    return current;
   }
 }
