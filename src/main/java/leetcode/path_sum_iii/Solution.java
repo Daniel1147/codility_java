@@ -11,6 +11,9 @@ class Solution {
     this.sum = sum;
     s = new Stack<Integer>();
 
+    if (root == null)
+      return 0;
+
     return helper(root);
   }
 
