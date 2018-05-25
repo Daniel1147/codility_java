@@ -146,6 +146,16 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void test10() {
+    input = new int[] {1, 2, 3, 4, 2, 1};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
   private void myTest() {
     actual = s.isPalindrome(head);
     assertEquals(getFailMsg(), expected, actual);
