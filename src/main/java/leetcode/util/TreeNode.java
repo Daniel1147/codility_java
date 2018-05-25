@@ -2,7 +2,7 @@ package leetcode.util;
 
 import daniel1147.util.ITree;
 
-public class TreeNode implements {
+public class TreeNode implements ITree {
   public int val;
   public TreeNode left;
   public TreeNode right;
