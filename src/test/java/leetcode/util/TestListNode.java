@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import org.junit.Test;
+import daniel1147.util.ListBuilder;
+import leetcode.util.ListNodeOperator;
 
 public class TestListNode {
   @Test
@@ -20,11 +22,14 @@ public class TestListNode {
 
   @Test
   public void testCreation() {
-    ListNode.Factory f;
     ListNode head;
+    ListNodeOperator lno;
+    ListBuilder lb;
 
-    f = new ListNode.Factory();
-    head = f.fromNumArray(new int[] {0, 1, 2, 3});
+    lno = new ListNodeOperator();
+    lb = new ListBuilder(lno);
+    lb.fromNumArray(new int[] {0, 1, 2, 3});
+    head = lno.getConcreteRoot();
 
     assertEquals("0 1 2 3", head.toString());
   }
