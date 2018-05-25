@@ -1,15 +1,17 @@
 package leetcode.path_sum_iii;
 
 import leetcode.util.TreeNode;
-import java.util.Stack;
 
 class Solution {
-  int sum;
-  Stack<Integer> s;
+  private final int MAX_NODE = 1000;
+
+  int sum, ancestorNum;
+  int[] ancestorSum;
 
   public int pathSum(TreeNode root, int sum) {
     this.sum = sum;
-    s = new Stack<Integer>();
+    ancestorSum = new int[MAX_NODE];
+    ancestorNum = 0;
 
     if (root == null)
       return 0;
@@ -20,10 +22,10 @@ class Solution {
   private int helper(TreeNode node) {
     int result, currentSum, parentSum;
 
-    if (s.empty())
+    if (ancestorNum == 0)
       parentSum = 0;
     else
-      parentSum = s.peek();
+      parentSum = ancestorSum[ancestorNum - 1];
 
     currentSum = node.val + parentSum;
 
@@ -32,8 +34,8 @@ class Solution {
     else
       result = 0;
 
-    for (Integer ancestorSum : s) {
-      if (currentSum - ancestorSum == sum) {
+    for (int i = 0; i < ancestorNum; i++) {
+      if (currentSum - ancestorSum[i] == sum) {
         // System.out.println("node.val => " + node.val);
         // System.out.println("currentSum => " + currentSum);
         // System.out.println("ancestorSum => " + ancestorSum);
@@ -41,7 +43,8 @@ class Solution {
       }
     }
 
-    s.push(currentSum);
+    ancestorSum[ancestorNum] = currentSum;
+    ancestorNum++;
 
     if (node.left != null)
       result += helper(node.left);
@@ -49,7 +52,7 @@ class Solution {
     if (node.right != null)
       result += helper(node.right);
 
-    s.pop();
+    ancestorNum--;
 
     return result;
   }
