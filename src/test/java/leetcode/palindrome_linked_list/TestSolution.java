@@ -14,6 +14,7 @@ public class TestSolution {
   private boolean expected, actual;
   private ListNode head;
   private Solution s;
+  private int[] input;
 
   @Before
   public void setUp() {
@@ -27,8 +28,6 @@ public class TestSolution {
 
   @Test
   public void testLeetcode1() {
-    int[] input;
-
     input = new int[] {1, 2};
 
     head = fromIntArray(input);
@@ -39,9 +38,97 @@ public class TestSolution {
 
   @Test
   public void testLeetcode2() {
-    int[] input;
-
     input = new int[] {1, 2, 2, 1};
+
+    head = fromIntArray(input);
+    expected = true;
+
+    myTest();
+  }
+
+  @Test
+  public void test1() {
+    input = new int[] {1};
+
+    head = fromIntArray(input);
+    expected = true;
+
+    myTest();
+  }
+
+  @Test
+  public void test2() {
+    input = new int[] {};
+
+    head = fromIntArray(input);
+    expected = true;
+
+    myTest();
+  }
+
+  @Test
+  public void test3() {
+    input = new int[] {1, 1};
+
+    head = fromIntArray(input);
+    expected = true;
+
+    myTest();
+  }
+
+  @Test
+  public void test4() {
+    input = new int[] {2, 1};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
+  @Test
+  public void test5() {
+    input = new int[] {1, 2, 1};
+
+    head = fromIntArray(input);
+    expected = true;
+
+    myTest();
+  }
+
+  @Test
+  public void test6() {
+    input = new int[] {1, 2, 3};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
+  @Test
+  public void test7() {
+    input = new int[] {1, 2, 3, 4};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
+  @Test
+  public void test8() {
+    input = new int[] {1, 2, 2, 4};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
+  @Test
+  public void test9() {
+    input = new int[] {3, 1, 1, 3};
 
     head = fromIntArray(input);
     expected = true;
