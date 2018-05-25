@@ -27,6 +27,15 @@ public class TestSolution {
   }
 
   @Test
+  public void testNull() {
+    root = null;
+    sum = 8;
+    expected = 0;
+
+    myTest();
+  }
+
+  @Test
   public void testLeetcode() {
     // [10,5,-3,3,2,null,11,3,-2,null,1]
     treeStr = "10 5 -3 3 2 x 11 3 -2 x 1";
