@@ -47,6 +47,16 @@ public class TestSolution {
   }
 
   @Test
+  public void testLeetcode3() {
+    input = new int[] {1, 1, 2, 1};
+
+    head = fromIntArray(input);
+    expected = false;
+
+    myTest();
+  }
+
+  @Test
   public void test1() {
     input = new int[] {1};
 
