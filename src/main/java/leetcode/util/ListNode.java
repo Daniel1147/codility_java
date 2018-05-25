@@ -1,6 +1,8 @@
 package leetcode.util;
 
-public class ListNode{
+import daniel1147.util.IListNode;
+
+public class ListNode implements IListNode {
   public static class Factory {
     public ListNode fromNumArray(int[] nums) {
       ListNode head, current;
@@ -40,5 +42,32 @@ public class ListNode{
     }
 
     return result;
+  }
+
+  @Override
+  public int value() {
+    return val;
+  }
+
+  @Override
+  public void setValue(int value) {
+    val = value;
+  }
+
+  @Override
+  public void appendNull() {
+    next = null;
+  }
+
+  @Override
+  public IListNode next() {
+    return next;
+  }
+
+  @Override
+  public IListNode append(int value) {
+    next = new ListNode(value);
+
+    return next;
   }
 }
