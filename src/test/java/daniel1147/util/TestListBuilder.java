@@ -9,13 +9,14 @@ public class TestListBuilder {
   ListConvertor lc;
   ListBuilder lb;
   IListNode head;
+  IListNodeOperator lno;
   int[] expect, actual;
 
   @Before
   public void setUp() {
     lc = new ListConvertor();
-    head = new SampleListNode(0);
-    lb = new ListBuilder(head);
+    lno = new SampleListNodeOperator();
+    lb = new ListBuilder(lno);
   }
 
   @Test
