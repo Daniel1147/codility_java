@@ -31,7 +31,7 @@ public class SampleListNodeOperator implements IListNodeOperator {
     tail = newNode;
   }
 
-  public SampleListNode create(int value) {
+  private SampleListNode create(int value) {
     return new SampleListNode(value);
   }
 }
