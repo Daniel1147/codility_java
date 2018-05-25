@@ -31,10 +31,7 @@ class Solution {
       result += m.get(currentSum - sum);
     }
 
-    if (m.containsKey(currentSum))
-      m.put(currentSum, m.get(currentSum) + 1);
-    else
-      m.put(currentSum, 1);
+    m.merge(currentSum, 1, Integer::sum);
 
     if (node.left != null)
       result += helper(node.left, currentSum);
@@ -42,7 +39,7 @@ class Solution {
     if (node.right != null)
       result += helper(node.right, currentSum);
 
-    m.put(currentSum, m.get(currentSum) - 1);
+    m.merge(currentSum, -1, Integer::sum);
 
     return result;
   }
