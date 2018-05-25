@@ -3,25 +3,6 @@ package leetcode.util;
 import daniel1147.util.IListNode;
 
 public class ListNode implements IListNode {
-  public static class Factory {
-    public ListNode fromNumArray(int[] nums) {
-      ListNode head, current;
-
-      if (nums.length == 0)
-        return null;
-
-      head = new ListNode(nums[0]);
-      current = head;
-
-      for (int i = 1; i < nums.length; i++) {
-        current.next = new ListNode(nums[i]);
-        current = current.next;
-      }
-
-      return head;
-    }
-  }
-
   public int val;
   public ListNode next;
   public ListNode(int x) {
