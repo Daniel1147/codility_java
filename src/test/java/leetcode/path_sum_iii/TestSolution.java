@@ -46,6 +46,17 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode1() {
+    // [5,4,8,11,null,13,4,7,2,null,null,5,1]
+    treeStr = "5 4 8 11 x 13 4 7 2 x x 5 1";
+    root = buildTree(treeStr);
+    sum = 22;
+    expected = 3;
+
+    myTest();
+  }
+
   private void myTest() {
     actual = s.pathSum(root, sum);
     assertEquals(getFailMsg(), expected, actual);
