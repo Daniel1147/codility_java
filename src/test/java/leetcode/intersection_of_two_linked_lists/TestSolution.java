@@ -24,11 +24,9 @@ public class TestSolution {
 
   @Test
   public void testLeetcode() {
-    ListNode.Factory f = new ListNode.Factory();
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
 
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
-
-    headB = f.fromNumArray(new int[] {6, 7, 8});
+    headB = fromNumArray(new int[] {6, 7, 8});
     headB.next.next.next = headA.next.next;
 
     expected = headA.next.next;
@@ -37,9 +35,7 @@ public class TestSolution {
 
   @Test
   public void testLeetcode1() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
     headB = null;
 
     expected = null;
@@ -48,11 +44,8 @@ public class TestSolution {
 
   @Test
   public void testNull() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
-
-    headB = f.fromNumArray(new int[] {6, 7, 8});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headB = fromNumArray(new int[] {6, 7, 8});
 
     expected = null;
     myTest();
@@ -69,9 +62,7 @@ public class TestSolution {
 
   @Test
   public void test1() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
     headB = headA.next.next;
 
     expected = headB;
@@ -85,5 +76,11 @@ public class TestSolution {
 
   private String getFailMsg() {
     return String.format("headA => %s\n headB => %s\n", headA, headB);
+  }
+
+  private ListNode fromNumArray(int[] num) {
+    ListNode.Factory f = new ListNode.Factory();
+
+    return f.fromNumArray(num);
   }
 }
