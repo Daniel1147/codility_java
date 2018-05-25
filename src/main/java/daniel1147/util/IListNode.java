@@ -5,6 +5,5 @@ public interface IListNode {
   public void setValue(int value);
   public void appendNull();
   public IListNode next();
-  public IListNode create(int value);
   public IListNode append(int value);
 }
