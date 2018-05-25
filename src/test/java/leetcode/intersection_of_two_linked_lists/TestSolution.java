@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import leetcode.util.ListNode;
+import leetcode.util.ListNodeOperator;
+import daniel1147.util.ListBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -79,8 +81,14 @@ public class TestSolution {
   }
 
   private ListNode fromNumArray(int[] num) {
-    ListNode.Factory f = new ListNode.Factory();
+    ListNodeOperator lno;
+    ListBuilder lb;
 
-    return f.fromNumArray(num);
+    lno = new ListNodeOperator();
+    lb = new ListBuilder(lno);
+
+    lb.fromNumArray(num);
+
+    return lno.getConcreteRoot();
   }
 }
