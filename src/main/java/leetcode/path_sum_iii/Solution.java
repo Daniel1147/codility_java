@@ -27,14 +27,18 @@ class Solution {
 
     currentSum = node.val + parentSum;
 
-    if (node.val == sum)
+    if (currentSum == sum)
       result = 1;
     else
       result = 0;
 
     for (Integer ancestorSum : s) {
-      if (currentSum - ancestorSum == sum)
+      if (currentSum - ancestorSum == sum) {
+        // System.out.println("node.val => " + node.val);
+        // System.out.println("currentSum => " + currentSum);
+        // System.out.println("ancestorSum => " + ancestorSum);
         result++;
+      }
     }
 
     s.push(currentSum);
