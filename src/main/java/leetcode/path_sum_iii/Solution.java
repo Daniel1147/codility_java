@@ -1,31 +1,24 @@
 package leetcode.path_sum_iii;
 
 import leetcode.util.TreeNode;
+import java.util.HashMap;
 
 class Solution {
-  private final int MAX_NODE = 1000;
-
-  int sum, ancestorNum;
-  int[] ancestorSum;
+  int sum;
+  HashMap<Integer, Integer> m;
 
   public int pathSum(TreeNode root, int sum) {
     this.sum = sum;
-    ancestorSum = new int[MAX_NODE];
-    ancestorNum = 0;
+    m = new HashMap<Integer, Integer>();
 
     if (root == null)
       return 0;
 
-    return helper(root);
+    return helper(root, 0);
   }
 
-  private int helper(TreeNode node) {
-    int result, currentSum, parentSum;
-
-    if (ancestorNum == 0)
-      parentSum = 0;
-    else
-      parentSum = ancestorSum[ancestorNum - 1];
+  private int helper(TreeNode node, int parentSum) {
+    int result, currentSum;
 
     currentSum = node.val + parentSum;
 
@@ -34,25 +27,22 @@ class Solution {
     else
       result = 0;
 
-    for (int i = 0; i < ancestorNum; i++) {
-      if (currentSum - ancestorSum[i] == sum) {
-        // System.out.println("node.val => " + node.val);
-        // System.out.println("currentSum => " + currentSum);
-        // System.out.println("ancestorSum => " + ancestorSum);
-        result++;
-      }
+    if (m.containsKey(currentSum - sum)) {
+      result += m.get(currentSum - sum);
     }
 
-    ancestorSum[ancestorNum] = currentSum;
-    ancestorNum++;
+    if (m.containsKey(currentSum))
+      m.put(currentSum, m.get(currentSum) + 1);
+    else
+      m.put(currentSum, 1);
 
     if (node.left != null)
-      result += helper(node.left);
+      result += helper(node.left, currentSum);
 
     if (node.right != null)
-      result += helper(node.right);
+      result += helper(node.right, currentSum);
 
-    ancestorNum--;
+    m.put(currentSum, m.get(currentSum) - 1);
 
     return result;
   }
