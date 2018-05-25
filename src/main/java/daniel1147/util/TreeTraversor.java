@@ -29,6 +29,10 @@ public class TreeTraversor
     q = new ArrayDeque<ITree>();
     result = new ArrayList<Integer>();
 
+    if (root == null) {
+      return new int[0];
+    }
+
     q.add(root);
 
     ITree t;
