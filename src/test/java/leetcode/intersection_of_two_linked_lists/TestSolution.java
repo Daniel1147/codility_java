@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import leetcode.util.ListNode;
+import leetcode.util.ListNodeOperator;
+import daniel1147.util.ListBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,11 +26,9 @@ public class TestSolution {
 
   @Test
   public void testLeetcode() {
-    ListNode.Factory f = new ListNode.Factory();
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
 
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
-
-    headB = f.fromNumArray(new int[] {6, 7, 8});
+    headB = fromNumArray(new int[] {6, 7, 8});
     headB.next.next.next = headA.next.next;
 
     expected = headA.next.next;
@@ -37,9 +37,7 @@ public class TestSolution {
 
   @Test
   public void testLeetcode1() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
     headB = null;
 
     expected = null;
@@ -48,11 +46,8 @@ public class TestSolution {
 
   @Test
   public void testNull() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
-
-    headB = f.fromNumArray(new int[] {6, 7, 8});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headB = fromNumArray(new int[] {6, 7, 8});
 
     expected = null;
     myTest();
@@ -69,9 +64,7 @@ public class TestSolution {
 
   @Test
   public void test1() {
-    ListNode.Factory f = new ListNode.Factory();
-
-    headA = f.fromNumArray(new int[] {1, 2, 3, 4, 5});
+    headA = fromNumArray(new int[] {1, 2, 3, 4, 5});
     headB = headA.next.next;
 
     expected = headB;
@@ -85,5 +78,17 @@ public class TestSolution {
 
   private String getFailMsg() {
     return String.format("headA => %s\n headB => %s\n", headA, headB);
+  }
+
+  private ListNode fromNumArray(int[] num) {
+    ListNodeOperator lno;
+    ListBuilder lb;
+
+    lno = new ListNodeOperator();
+    lb = new ListBuilder(lno);
+
+    lb.fromNumArray(num);
+
+    return lno.getConcreteRoot();
   }
 }
