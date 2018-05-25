@@ -1,28 +1,19 @@
 package daniel1147.util;
 
 public class ListBuilder {
-  private IListNode head;
+  private IListNodeOperator o;
 
-  public ListBuilder(IListNode head) {
-    this.head = head;
+  public ListBuilder(IListNodeOperator o) {
+    this.o = o;
   }
 
   public IListNode fromNumArray(int[] num) {
-    IListNode current;
+    IListNode current, head;
 
-    if (num.length == 0) {
-      head.appendNull();
-      return null;
+    for (int i = 0;i < num.length; i++) {
+      o.add(num[i]);
     }
 
-    head.setValue(num[0]);
-    current = head;
-
-    for (int i = 1;i < num.length; i++) {
-      current.append(num[i]);
-      current = current.next();
-    }
-
-    return head;
+    return o.getListNodeRoot();
   }
 }
