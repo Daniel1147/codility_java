@@ -19,18 +19,18 @@ class Solution {
     char c;
     int indexC;
 
-    charLeft = new int[26];
+    charLeft = new int[255];
 
     for (int i = 0; i < p.length(); i++) {
-      indexC = cIndex(p.charAt(i));
-      charLeft[indexC]++;
+      charLeft[p.charAt(i)]++;
     }
 
     return;
   }
 
   private List<Integer> process(String s, int pLen) {
-    int slow, fast, matchCount, indexNewC, oldIndexC;
+    int slow, fast, matchCount;
+    char newC, oldC;
     List<Integer> result;
 
     slow = 0;
@@ -40,9 +40,9 @@ class Solution {
 
     while (fast < s.length()) {
       // System.out.println(String.format("slow => %d, fast => %d, matchCount => %d", slow, fast, matchCount));
-      indexNewC = cIndex(s.charAt(fast));
-      charLeft[indexNewC]--;
-      if (charLeft[indexNewC] >= 0)
+      newC = s.charAt(fast);
+      charLeft[newC]--;
+      if (charLeft[newC] >= 0)
         matchCount++;
       fast++;
 
@@ -51,10 +51,9 @@ class Solution {
       }
 
       if (fast - slow == pLen) {
-        oldIndexC = cIndex(s.charAt(slow));
-        charLeft[oldIndexC]++;
+        charLeft[s.charAt(slow)]++;
 
-        if (charLeft[oldIndexC] > 0)
+        if (charLeft[s.charAt(slow)] > 0)
           matchCount--;
 
         slow++;
@@ -62,9 +61,5 @@ class Solution {
     }
 
     return result;
-  }
-
-  private int cIndex(char c) {
-    return c - 'a';
   }
 }
