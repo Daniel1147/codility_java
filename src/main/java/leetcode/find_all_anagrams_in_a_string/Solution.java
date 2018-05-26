@@ -1,7 +1,7 @@
 package leetcode.find_all_anagrams_in_a_string;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 class Solution {
   int[] charLeft;
@@ -29,14 +29,16 @@ class Solution {
   }
 
   private List<Integer> process(String s, int pLen) {
-    int slow, fast, matchCount;
+    int slow, fast, matchCount, resultCount;
     char newC, oldC;
-    List<Integer> result;
+    Integer[] result;
+
+    result = new Integer[s.length()];
+    resultCount = 0;
 
     slow = 0;
     fast = 0;
     matchCount = 0;
-    result = new ArrayList<Integer>();
 
     while (fast < s.length()) {
       // System.out.println(String.format("slow => %d, fast => %d, matchCount => %d", slow, fast, matchCount));
@@ -47,7 +49,7 @@ class Solution {
       fast++;
 
       if (matchCount == pLen) {
-        result.add(slow);
+        result[resultCount++] = slow;
       }
 
       if (fast - slow == pLen) {
@@ -60,6 +62,6 @@ class Solution {
       }
     }
 
-    return result;
+    return Arrays.asList(result).subList(0, resultCount);
   }
 }
