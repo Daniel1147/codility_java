@@ -29,9 +29,10 @@ class Solution {
     int slow, fast, matchCount, resultCount;
     char newC, oldC;
     char[] sArr;
-    List<Integer> result;
+    Integer[] result;
 
-    result = new ArrayList<Integer> ();
+
+    result = new Integer[s.length()];
     resultCount = 0;
 
     slow = 0;
@@ -48,7 +49,7 @@ class Solution {
       fast++;
 
       if (matchCount == pLen) {
-        result.add(slow);
+        result[resultCount++] = slow;
       }
 
       if (fast - slow == pLen) {
@@ -61,6 +62,6 @@ class Solution {
       }
     }
 
-    return result;
+    return Arrays.asList(result).subList(0, resultCount);
   }
 }
