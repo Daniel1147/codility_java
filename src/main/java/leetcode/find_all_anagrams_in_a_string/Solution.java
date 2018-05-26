@@ -17,14 +17,10 @@ class Solution {
   }
 
   private void buildCharLeft(String p) {
-    char c;
-    int indexC;
-
     charLeft = new int[255];
 
-    for (int i = 0; i < p.length(); i++) {
-      charLeft[p.charAt(i)]++;
-    }
+    for (char c : p.toCharArray())
+      charLeft[c]++;
 
     return;
   }
@@ -32,6 +28,7 @@ class Solution {
   private List<Integer> process(String s, int pLen) {
     int slow, fast, matchCount, resultCount;
     char newC, oldC;
+    char[] sArr;
     List<Integer> result;
 
     result = new ArrayList<Integer> ();
@@ -40,10 +37,11 @@ class Solution {
     slow = 0;
     fast = 0;
     matchCount = 0;
+    sArr = s.toCharArray();
 
-    while (fast < s.length()) {
+    while (fast < sArr.length) {
       // System.out.println(String.format("slow => %d, fast => %d, matchCount => %d", slow, fast, matchCount));
-      newC = s.charAt(fast);
+      newC = sArr[fast];
       charLeft[newC]--;
       if (charLeft[newC] >= 0)
         matchCount++;
@@ -54,9 +52,9 @@ class Solution {
       }
 
       if (fast - slow == pLen) {
-        charLeft[s.charAt(slow)]++;
+        charLeft[sArr[slow]]++;
 
-        if (charLeft[s.charAt(slow)] > 0)
+        if (charLeft[sArr[slow]] > 0)
           matchCount--;
 
         slow++;
