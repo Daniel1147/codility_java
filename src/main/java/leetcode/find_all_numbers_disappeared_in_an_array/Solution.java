@@ -6,40 +6,29 @@ import java.util.ArrayList;
 
 class Solution {
   public List<Integer> findDisappearedNumbers(int[] nums) {
-    int tmp, target, indexScan;
-    List<Integer> result;
+    int value, targetValue;
+    List<Integer> result = new ArrayList<Integer>();
 
-    result = new ArrayList<Integer>();
-
-    if (nums == null || nums.length == 0)
+    if (nums == null || nums.length < 2)
       return result;
-    // swap
-    indexScan = 0;
-    while (indexScan < nums.length) {
-      target = nums[indexScan] - 1;
 
-      if (target == indexScan) {
-        indexScan++;
+    for (int i = 0; i < nums.length; i++) {
+      value = nums[i];
+      if (value < 0)
+        value = value * -1;
 
-        continue;
-      }
-
-      if (nums[target] == target + 1) {
-        indexScan++;
-
-        continue;
-      }
-
-      tmp = nums[target];
-      nums[target] = nums[indexScan];
-      nums[indexScan] = tmp;
+      targetValue = nums[value - 1];
+      if (targetValue > 0)
+        nums[value - 1]  = targetValue * -1;
     }
 
     for (int i = 0; i < nums.length; i++) {
-      if (nums[i] != i + 1)
+      if (nums[i] > 0) {
         result.add(i + 1);
+      }
     }
 
     return result;
+
   }
 }
