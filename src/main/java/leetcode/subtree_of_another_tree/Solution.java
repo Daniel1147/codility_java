@@ -12,10 +12,8 @@ class Solution {
     if (big == null)
       return false;
 
-    if (big.val == small.val) {
-      if (check(big, small))
-        return true;
-    }
+    if (check(big, small))
+      return true;
 
     if (dfsCheck(big.left, small))
       return true;
