@@ -29,6 +29,6 @@ public class TestSolution {
   private void myTest() {
     actual = s.findDisappearedNumbers(nums);
 
-    assertThat(expected, is(actual));
+    assertThat(actual, is(expected));
   }
 }
