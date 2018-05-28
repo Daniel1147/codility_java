@@ -1,6 +1,8 @@
 package daniel1147.util;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.util.Arrays;
 import org.junit.Before;
@@ -13,10 +15,8 @@ public class TestTreeTraversor {
 
   @Before
   public void setUp() {
-    TreeBuilder tb = new TreeBuilder(new SampleTreeOperator());
-    tb.levelOrderConstruct("1 2 3 4 5 6");
-    root = tb.getITree();
-    tt = new TreeTraversor(root);
+    root = buildTree("1 2 3 4 5 6");
+    tt = getTreeTraversor(root);
   }
 
   @Test
@@ -69,5 +69,26 @@ public class TestTreeTraversor {
             "expected => %s, actual => %s\n",
             Arrays.toString(expected), Arrays.toString(levelOrder));
     assertArrayEquals(errorMsg, expected, levelOrder);
+  }
+
+  // @Test
+  // public void TestSame() {
+  //   ITree t1, t2;
+  //
+  //   t1 = buildTree("1 2 3");
+  //   t2 = buildTree("1 2 3");
+  //
+  //   assertTrue()
+  // }
+
+  private ITree buildTree(String s) {
+    TreeBuilder tb = new TreeBuilder(new SampleTreeOperator());
+    tb.levelOrderConstruct(s);
+
+    return tb.getITree();
+  }
+
+  private TreeTraversor getTreeTraversor(ITree root) {
+    return new TreeTraversor(root);
   }
 }
