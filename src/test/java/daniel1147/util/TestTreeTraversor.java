@@ -20,7 +20,7 @@ public class TestTreeTraversor {
   }
 
   @Test
-  public void TestPreOrder() {
+  public void testPreOrder() {
     expected = new int[] {1, 2, 4, 5, 3, 6};
     preOrder = tt.preOrder();
 
@@ -31,7 +31,7 @@ public class TestTreeTraversor {
   }
 
   @Test
-  public void TestInOrder() {
+  public void testInOrder() {
     int[] expected, inOrder;
 
     expected = new int[] {4, 2, 5, 1, 6, 3};
@@ -44,7 +44,7 @@ public class TestTreeTraversor {
   }
 
   @Test
-  public void TestPostOrder() {
+  public void testPostOrder() {
     int[] expected, postOrder;
 
     expected = new int[] {4, 5, 2, 6, 3, 1};
@@ -58,7 +58,7 @@ public class TestTreeTraversor {
   }
 
   @Test
-  public void TestLevelOrder() {
+  public void testLevelOrder() {
     int[] expected, levelOrder;
 
     expected = new int[] {1, 2, 3, 4, 5, 6};
@@ -71,15 +71,34 @@ public class TestTreeTraversor {
     assertArrayEquals(errorMsg, expected, levelOrder);
   }
 
-  // @Test
-  // public void TestSame() {
-  //   ITree t1, t2;
-  //
-  //   t1 = buildTree("1 2 3");
-  //   t2 = buildTree("1 2 3");
-  //
-  //   assertTrue()
-  // }
+  @Test
+  public void testSame() {
+    ITree t1, t2;
+
+    t1 = buildTree("1 2 3");
+    t2 = buildTree("1 2 3");
+    tt = getTreeTraversor(t1);
+
+    assertTrue(tt.same(t2));
+
+    t1 = buildTree("1 2 3");
+    t2 = buildTree("1 2");
+    tt = getTreeTraversor(t1);
+
+    assertFalse(tt.same(t2));
+
+    t1 = buildTree("1 2");
+    t2 = buildTree("1 2 3");
+    tt = getTreeTraversor(t1);
+
+    assertFalse(tt.same(t2));
+
+    t1 = buildTree("1 2 3");
+    t2 = buildTree("1 2 4");
+    tt = getTreeTraversor(t1);
+
+    assertFalse(tt.same(t2));
+  }
 
   private ITree buildTree(String s) {
     TreeBuilder tb = new TreeBuilder(new SampleTreeOperator());
