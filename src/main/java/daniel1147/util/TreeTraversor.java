@@ -55,6 +55,10 @@ public class TreeTraversor
     return output;
   }
 
+  public boolean same(ITree t) {
+    return same(root, t);
+  }
+
   private int[] preOrderTree(ITree tree) {
     int[] result, lResult, rResult;
     ITree lTree, rTree;
@@ -116,5 +120,26 @@ public class TreeTraversor
     System.arraycopy(c, 0, result, a.length + b.length, c.length);
 
     return result;
+  }
+
+  private boolean same(ITree t1, ITree t2) {
+    if (t1 == null && t2 == null)
+      return true;
+
+    if (t1 == null || t2 == null)
+      return false;
+
+    if (t1.value() != t2.value())
+      return false;
+
+    if (!same(t1.left(), t2.left())) {
+      return false;
+    }
+
+    if (!same(t1.right(), t2.right())) {
+      return false;
+    }
+
+    return true;
   }
 }
