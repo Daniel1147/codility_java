@@ -2,6 +2,7 @@
 
 ROOT_PACKAGE=codility
 # ROOT_PACKAGE=leetcode
+# ROOT_PACKAGE=random
 DESC=classes
 
 TEST_DIR=src/test
