@@ -9,3 +9,6 @@ classes/codility/fish/TestFish.class: fish/*.java
 
 clean:
 	find classes -type f -iname *.class | tr '\n' ' ' | xargs rm -f
+
+# gradle test command example:
+# gradle test --tests *to_lower_case*
