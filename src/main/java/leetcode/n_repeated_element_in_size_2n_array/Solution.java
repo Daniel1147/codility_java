@@ -13,11 +13,11 @@ class Solution {
 
     for (int i = 0; i < n; i++) {
       iElement = A[i];
-      count[iElement]++;
 
-      if (count[iElement] == targetRepeatTimes) {
+      if (count[iElement] != 0)
         return iElement;
-      }
+
+      count[iElement]++;
     }
 
     return -1;
