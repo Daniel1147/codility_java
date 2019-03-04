@@ -30,6 +30,20 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode2() {
+    A = new int[] {2,1,2,5,3,2};
+    expected = 2;
+    myTest();
+  }
+
+  @Test
+  public void testLeetcode3() {
+    A = new int[] {5,1,5,2,5,3,5,4};
+    expected = 5;
+    myTest();
+  }
+
   private void myTest() {
     actual = s.repeatedNTimes(A);
     assertEquals(getFailMsg(), actual, expected);
