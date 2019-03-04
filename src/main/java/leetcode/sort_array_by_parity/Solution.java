@@ -4,22 +4,20 @@ import java.util.*;
 
 class Solution {
   public int[] sortArrayByParity(int[] A) {
-    int[] result = new int[A.length];
-    int evenIndex, oddIndex;
+    int oddHead = A.length;
+    int tmp;
 
-    evenIndex = 0;
-    oddIndex = A.length - 1;
+    for (int i = 0; i < oddHead; i++) {
+      if (A[i] % 2 == 1) {
+        oddHead--;
+        tmp = A[i];
+        A[i] = A[oddHead];
+        A[oddHead] = tmp;
 
-    for (int i = 0; i < A.length; i++) {
-      if (A[i] % 2 == 0) {
-        result[evenIndex] = A[i];
-        evenIndex++;
-      } else {
-        result[oddIndex] = A[i];
-        oddIndex--;
+        i--;
       }
     }
 
-    return result;
+    return A;
   }
 }
