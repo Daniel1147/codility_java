@@ -7,19 +7,19 @@ class Solution {
 
   public int repeatedNTimes(int[] A) {
     int n = A.length;
-    Set<Integer> s= new HashSet<Integer>();
-    int iElement;
-    int targetRepeatTimes = n / 2;
+    int i1, i2;
+    Random rand = new Random();
 
-    for (int i = 0; i < n; i++) {
-      iElement = A[i];
+    while (true) {
+      i1 = rand.nextInt(n);
+      i2 = rand.nextInt(n);
+      while (i1 == i2) {
+        i2 = rand.nextInt(n);
+      }
 
-      if (s.contains(iElement))
-        return iElement;
-
-      s.add(iElement);
+      if (A[i1] == A[i2]) {
+        return A[i1];
+      }
     }
-
-    return -1;
   }
 }
