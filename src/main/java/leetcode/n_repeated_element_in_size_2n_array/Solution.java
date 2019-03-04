@@ -7,17 +7,17 @@ class Solution {
 
   public int repeatedNTimes(int[] A) {
     int n = A.length;
-    int[] count = new int[ELEMENT_MAX + 1];
+    Set<Integer> s= new HashSet<Integer>();
     int iElement;
     int targetRepeatTimes = n / 2;
 
     for (int i = 0; i < n; i++) {
       iElement = A[i];
 
-      if (count[iElement] != 0)
+      if (s.contains(iElement))
         return iElement;
 
-      count[iElement]++;
+      s.add(iElement);
     }
 
     return -1;
