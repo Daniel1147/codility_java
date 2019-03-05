@@ -26,3 +26,7 @@ test {
         showStandardStreams = true
     }
 }
+
+tasks.withType(JavaCompile).all {
+    options.compilerArgs.add("-Xlint:deprecation")
+}

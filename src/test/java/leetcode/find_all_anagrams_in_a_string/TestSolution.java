@@ -1,6 +1,6 @@
 package leetcode.find_all_anagrams_in_a_string;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -36,7 +36,8 @@ public class TestSolution {
   private void myTest() {
     expect = sol.findAnagrams(s, p);
 
-    assertThat(expect, is(actual));
+    // assertThat(expect, is(actual));
+    assertEquals(expect, actual);
   }
 
   private String getFailMsg() {
