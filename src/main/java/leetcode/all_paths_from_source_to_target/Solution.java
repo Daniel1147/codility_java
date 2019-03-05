@@ -8,8 +8,6 @@ class Solution {
   private List<Integer> path;
 
   public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-    List<List<Integer>> result = new LinkedList<List<Integer>>();
-
     target = graph.length - 1;
     this.graph = graph;
 
@@ -20,10 +18,10 @@ class Solution {
     List<List<Integer>> result, subResult;
     int next, subPathNum;
 
-    result = new LinkedList<List<Integer>>();
+    result = new ArrayList<List<Integer>>();
 
     if (start == target) {
-      path = new LinkedList<Integer> ();
+      path = new ArrayList<Integer> ();
       path.add(target);
       result.add(path);
 
