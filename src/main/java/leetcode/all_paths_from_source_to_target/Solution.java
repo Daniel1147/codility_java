@@ -3,31 +3,42 @@ package leetcode.all_paths_from_source_to_target;
 import java.util.*;
 
 class Solution {
+  private int target;
+  private int[][] graph;
+  private List<Integer> path;
+
   public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
     List<List<Integer>> result = new LinkedList<List<Integer>>();
-    Queue<LinkedList<Integer>> walkerQueue = new LinkedList<LinkedList<Integer>>();
-    LinkedList<Integer> walker, newList;
-    int position, target, nextNode;
 
     target = graph.length - 1;
+    this.graph = graph;
 
-    LinkedList<Integer> firstWalker = new LinkedList<Integer>();
-    firstWalker.add(0);
-    walkerQueue.add(firstWalker);
+    return helper(0);
+  }
 
-    while (!walkerQueue.isEmpty()) {
-      walker = walkerQueue.poll();
+  private List<List<Integer>> helper(int start) {
+    List<List<Integer>> result, subResult;
+    int next, subPathNum;
 
-      position = walker.getLast();
-      for (int i = 0; i < graph[position].length; i++) {
-        nextNode = graph[position][i];
-        newList = new LinkedList<Integer> (walker);
-        newList.add(nextNode);
-        if (nextNode == target) {
-          result.add(newList);
-        } else {
-          walkerQueue.add(newList);
-        }
+    result = new LinkedList<List<Integer>>();
+
+    if (start == target) {
+      path = new LinkedList<Integer> ();
+      path.add(target);
+      result.add(path);
+
+      return result;
+    }
+
+    for (int i = 0; i < graph[start].length; i++) {
+      next = graph[start][i];
+      subResult = helper(next);
+      subPathNum = subResult.size();
+      for (int j = 0; j < subPathNum; j++) {
+        path = new LinkedList<Integer> ();
+        path.add(start);
+        path.addAll(subResult.get(j));
+        result.add(path);
       }
     }
 
