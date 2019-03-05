@@ -1,6 +1,6 @@
 package leetcode.find_all_numbers_disappeared_in_an_array;
 
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.util.Arrays;
@@ -29,6 +29,6 @@ public class TestSolution {
   private void myTest() {
     actual = s.findDisappearedNumbers(nums);
 
-    assertThat(actual, is(expected));
+    assertEquals(expected, actual);
   }
 }
