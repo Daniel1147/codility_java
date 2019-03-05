@@ -35,9 +35,8 @@ class Solution {
       subResult = helper(next);
       subPathNum = subResult.size();
       for (int j = 0; j < subPathNum; j++) {
-        path = new LinkedList<Integer> ();
-        path.add(start);
-        path.addAll(subResult.get(j));
+        path = subResult.get(j);
+        path.add(0, start);
         result.add(path);
       }
     }
