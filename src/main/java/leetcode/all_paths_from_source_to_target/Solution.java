@@ -3,37 +3,40 @@ package leetcode.all_paths_from_source_to_target;
 import java.util.*;
 
 class Solution {
+  int[] path;
+  int[][] graph;
+  int target;
   private List<List<Integer>> result;
-  private int[][] graph;
-  private int target;
-  private int n;
 
   public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-    List<Integer> path;
-
-    result = new ArrayList<List<Integer>> ();
     this.graph = graph;
-    n = graph.length;
-    target = n - 1;
-    path = new ArrayList<Integer> ();
-    path.add(0);
-    helper(path, 0);
+    path = new int[graph.length];
+    target = graph.length - 1;
+    result = new ArrayList<List<Integer>> ();
+
+    path[0] = 0;
+    dfs(path, 1, 0);
 
     return result;
   }
 
-  public void helper(List<Integer> path, int current) {
+  private void dfs (int[] path, int len, int current) {
     int next;
-    List<Integer> newPath;
+    List<Integer> fullPath;
+
     if (current == target) {
-      result.add(path);
+      fullPath = new ArrayList<Integer> ();
+      for (int i = 0; i < len; i++)
+        fullPath.add(path[i]);
+      result.add(fullPath);
+      return;
     }
 
     for (int i = 0; i < graph[current].length; i++) {
       next = graph[current][i];
-      newPath = new ArrayList<Integer> (path);
-      newPath.add(next);
-      helper(newPath, next);
+      path[len] = next;
+
+      dfs(path, len + 1, next);
     }
 
     return;
