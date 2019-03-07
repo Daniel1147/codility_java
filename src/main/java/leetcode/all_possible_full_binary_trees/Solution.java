@@ -14,8 +14,10 @@ class Solution {
     cache = new ArrayList<List<TreeNode>> ();
 
     listZero = new ArrayList<TreeNode> ();
-    listZero.add(null);
     cache.add(listZero);
+
+    if (N % 2 == 0)
+      return listZero;
 
     listOne = new ArrayList<TreeNode> ();
     newRoot = new TreeNode(0);
