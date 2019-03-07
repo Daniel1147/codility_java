@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
+import com.google.gson.Gson;
 
 public class TestSolution {
   private int expected, actual;
