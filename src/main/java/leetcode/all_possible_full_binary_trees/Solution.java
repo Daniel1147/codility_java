@@ -8,7 +8,7 @@ class Solution {
   private int MAX_N = 20;
 
   public List<TreeNode> allPossibleFBT(int N) {
-    List<TreeNode> listZero, leftPFBT, rightPFBT, l;
+    List<TreeNode> listZero, listOne, leftPFBT, rightPFBT, l;
     TreeNode newRoot;
 
     cache = new ArrayList<List<TreeNode>> ();
@@ -17,21 +17,20 @@ class Solution {
     listZero.add(null);
     cache.add(listZero);
 
-    for (int i = 1; i <= N; i++) {
+    listOne = new ArrayList<TreeNode> ();
+    newRoot = new TreeNode(0);
+    listOne.add(newRoot);
+    cache.add(listOne);
+
+    for (int i = 2; i <= N; i++) {
       l = new ArrayList<TreeNode> ();
       cache.add(l);
-      for (int j = 0; j < i; j++) {
+      for (int j = 1; j <= i - 2; j+= 2) {
         leftPFBT = cache.get(j);
         rightPFBT = cache.get(i - 1 - j);
 
         for (TreeNode leftTree : leftPFBT) {
           for (TreeNode rightTree : rightPFBT) {
-            if (leftTree == null && rightTree != null)
-              continue;
-
-            if (leftTree != null && rightTree == null)
-              continue;
-
             newRoot = new TreeNode(0);
             newRoot.left = leftTree;
             newRoot.right = rightTree;
