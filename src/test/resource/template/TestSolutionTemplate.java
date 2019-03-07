@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 public class TestSolution {
   private int expected, actual;
   private Solution s;
+  private Gson g = new Gson();
 
   @Before
   public void setUp() {
