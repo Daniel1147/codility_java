@@ -33,8 +33,8 @@ class Solution {
               continue;
 
             newRoot = new TreeNode(0);
-            newRoot.left = treeCopy(leftTree);
-            newRoot.right = treeCopy(rightTree);
+            newRoot.left = leftTree;
+            newRoot.right = rightTree;
 
             l.add(newRoot);
           }
@@ -43,18 +43,5 @@ class Solution {
     }
 
     return cache.get(N);
-  }
-
-  public TreeNode treeCopy(TreeNode root) {
-    TreeNode newRoot;
-
-    if (root == null)
-      return null;
-
-    newRoot = new TreeNode(root.val);
-    newRoot.left = treeCopy(root.left);
-    newRoot.right = treeCopy(root.right);
-
-    return newRoot;
   }
 }
