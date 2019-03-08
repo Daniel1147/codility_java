@@ -37,6 +37,20 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode2() {
+    board = new char[][] {
+      {'.', 'X', '.', '.', 'X'},
+      {'.', 'X', '.', '.', 'X'},
+      {'.', '.', '.', '.', 'X'},
+      {'X', '.', 'X', 'X', '.'},
+      {'X', '.', '.', '.', 'X'}
+    };
+    expected = 5;
+
+    myTest();
+  }
+
   private char[][] toCharArray(String[] sBoard) {
     char[][] result;
 
