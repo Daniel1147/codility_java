@@ -59,6 +59,44 @@ public class TreeTraversor
     return same(root, t);
   }
 
+  public int[] fullBinaryTreeArray() {
+    List<Integer> resultList = new ArrayList<Integer>();
+    int[] result;
+    Queue<ITree> q = new LinkedList<ITree>();
+    ITree node;
+    int nodeCnt;
+
+    q.add(root);
+    if (root != null)
+      nodeCnt = 1;
+    else
+      nodeCnt = 0;
+
+    while(nodeCnt > 0) {
+      node = q.poll();
+      if (node == null) {
+        resultList.add(-1);
+        q.add(null);
+        q.add(null);
+      } else {
+        nodeCnt--;
+        resultList.add(node.value());
+        if (node.left() != null)
+          nodeCnt++;
+        if (node.right() != null)
+          nodeCnt++;
+        q.add(node.left());
+        q.add(node.right());
+      }
+    }
+
+    result = new int[resultList.size()];
+    for (int i = 0; i < resultList.size(); i++)
+      result[i] = resultList.get(i);
+
+    return result;
+  }
+
   private int[] preOrderTree(ITree tree) {
     int[] result, lResult, rResult;
     ITree lTree, rTree;
