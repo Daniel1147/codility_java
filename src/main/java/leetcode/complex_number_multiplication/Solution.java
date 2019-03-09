@@ -17,6 +17,6 @@ class Solution {
     ansR = aR * bR - aI * bI;
     ansI = aR * bI + aI * bR;
 
-    return String.format("%s+%si", Integer.toString(ansR), Integer.toString(ansI));
+    return ansR + "+" + ansI + "i";
   }
 }
