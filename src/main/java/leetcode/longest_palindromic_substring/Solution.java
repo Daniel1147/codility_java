@@ -7,12 +7,14 @@ class Solution {
   public String longestPalindrome(String s) {
     int n, max, len, maxStart, maxEnd;
     int[][] LPS;
+    char[] charS;
 
     if (s.length() == 0)
       return "";
 
     n = s.length();
     LPS = new int[n + 1][n];
+    charS = s.toCharArray();
 
     max = 1;
     maxStart = 0;
@@ -25,7 +27,7 @@ class Solution {
       if (i > max + 2)
         break;
       for (int j = 0; j + i - 1 < n; j++) {
-        if (LPS[i - 2][j + 1] != -1 && s.charAt(j) == s.charAt(j + i - 1)) {
+        if (LPS[i - 2][j + 1] != -1 && charS[j] == charS[j + i - 1]) {
           len = LPS[i - 2][j + 1] + 2;
           LPS[i][j] = len;
           if (len > max) {
