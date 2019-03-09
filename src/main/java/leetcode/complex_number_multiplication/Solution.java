@@ -4,16 +4,15 @@ import java.util.*;
 
 class Solution {
   public String complexNumberMultiply(String a, String b) {
-    int aR, aI, bR, bI, ansR, ansI;
-    String[] aS, bS;
+    int aR, aI, bR, bI, ansR, ansI, pI;
 
-    aS = a.split("\\+");
-    aR = Integer.parseInt(aS[0]);
-    aI = Integer.parseInt(aS[1].substring(0, aS[1].length() - 1));
+    pI = a.indexOf('+');
+    aR = Integer.parseInt(a.substring(0, pI));
+    aI = Integer.parseInt(a.substring(pI + 1, a.length() - 1));
 
-    bS = b.split("\\+");
-    bR = Integer.parseInt(bS[0]);
-    bI = Integer.parseInt(bS[1].substring(0, bS[1].length() - 1));
+    pI = b.indexOf('+');
+    bR = Integer.parseInt(b.substring(0, pI));
+    bI = Integer.parseInt(b.substring(pI + 1, b.length() - 1));
 
     ansR = aR * bR - aI * bI;
     ansI = aR * bI + aI * bR;
