@@ -39,6 +39,22 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode3() {
+    s = "";
+    expected = "";
+
+    myTest();
+  }
+
+  @Test
+  public void testLeetcode4() {
+    s = "abcda";
+    expected = "a";
+
+    myTest();
+  }
+
   private void myTest() {
     actual = solution.longestPalindrome(s);
     assertEquals(getFailMsg(), expected, actual);
