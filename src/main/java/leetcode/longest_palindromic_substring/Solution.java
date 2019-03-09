@@ -22,6 +22,8 @@ class Solution {
     }
 
     for (int i = 2; i <= n; i++) {
+      if (i > max + 2)
+        break;
       for (int j = 0; j + i - 1 < n; j++) {
         if (LPS[i - 2][j + 1] != -1 && s.charAt(j) == s.charAt(j + i - 1)) {
           len = LPS[i - 2][j + 1] + 2;
