@@ -1,46 +1,50 @@
 package leetcode.longest_palindromic_substring;
 
 import java.util.*;
-import com.google.gson.Gson;
 
 class Solution {
   public String longestPalindrome(String s) {
-    int n, max, maxStart, maxEnd;
-    boolean[][] LPS;
     char[] charS;
+    int n, len, max, start, end;
+
+    charS = s.toCharArray();
+    n = charS.length;
 
     if (s.length() == 0)
       return "";
 
-    n = s.length();
-    LPS = new boolean[n + 1][n];
-    charS = s.toCharArray();
+    start = 0;
+    end = 0;
 
-    max = 1;
-    maxStart = 0;
-    maxEnd = 1;
-    for (int i = 0; i < n; i++) {
-      LPS[0][i] = true;
-      LPS[1][i] = true;
-    }
+    max = 0;
+    for (int i = 0; i <= 2 * n - 2; i++) {
+      if (i % 2 == 0)
+        len = middlePalindromeLen(charS, i / 2, i / 2);
+      else
+        len = middlePalindromeLen(charS, i / 2, i / 2 + 1);
 
-    for (int i = 2; i <= n; i++) {
-      if (i > max + 2)
-        break;
-      for (int j = 0; j + i - 1 < n; j++) {
-        if (LPS[i - 2][j + 1] && charS[j] == charS[j + i - 1]) {
-          LPS[i][j] = true;
-          if (i > max) {
-            max = i;
-            maxStart = j;
-            maxEnd = j + i;
-          }
+      if (max < len) {
+        max = len;
+        if (i % 2 == 0) {
+          start = i / 2 - (len - 1) / 2;
+          end = i / 2 + (len - 1) / 2;
         } else {
-          LPS[i][j] = false;
+          start = i / 2 - len / 2 + 1;
+          end = i / 2 + 1 + len / 2 - 1;
         }
       }
     }
 
-    return s.substring(maxStart, maxEnd);
+
+    return s.substring(start, end + 1);
+  }
+
+  private int middlePalindromeLen(char[] charS, int l, int r) {
+    while (l >= 0 && r < charS.length && charS[l] == charS[r]) {
+      l--;
+      r++;
+    }
+
+    return r - 1 - l - 1 + 1;
   }
 }
