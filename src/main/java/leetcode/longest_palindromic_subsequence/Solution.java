@@ -5,15 +5,16 @@ import java.util.*;
 class Solution {
   public int longestPalindromeSubseq(String s) {
     int[][] LPS;
-    int n, l, r, max, cCnt, nLPS;
-    char[] result;
+    int n, l, r, max;
     char c;
+    char[] charS;
 
     if (s.length() == 0)
       return 0;
 
     n = s.length();
     LPS = new int[n + 1][n];
+    charS = s.toCharArray();
 
     for (int i = 0; i < n; i++) {
       LPS[1][i] = 1;
@@ -30,7 +31,7 @@ class Solution {
           max = LPS[i - 1][l + 1];
         }
 
-        if (s.charAt(l) == s.charAt(r) && max < LPS[i - 2][l + 1] + 2) {
+        if (charS[l] == charS[r] && max < LPS[i - 2][l + 1] + 2) {
           max = LPS[i - 2][l + 1] + 2;
         }
 
