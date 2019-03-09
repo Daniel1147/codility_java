@@ -5,8 +5,7 @@ import com.google.gson.Gson;
 
 class Solution {
   public String longestPalindrome(String s) {
-    int n, max, len;
-    String maxS;
+    int n, max, len, maxStart, maxEnd;
     int[][] LPS;
 
     if (s.length() == 0)
@@ -16,7 +15,8 @@ class Solution {
     LPS = new int[n + 1][n];
 
     max = 1;
-    maxS = s.substring(0, 1);
+    maxStart = 0;
+    maxEnd = 1;
     for (int i = 0; i < n; i++) {
       LPS[1][i] = 1;
     }
@@ -30,7 +30,8 @@ class Solution {
           LPS[i][j] = len;
           if (len > max) {
             max = len;
-            maxS = s.substring(j, j + i);
+            maxStart = j;
+            maxEnd = j + i;
           }
         } else {
           LPS[i][j] = -1;
@@ -38,6 +39,6 @@ class Solution {
       }
     }
 
-    return maxS;
+    return s.substring(maxStart, maxEnd);
   }
 }
