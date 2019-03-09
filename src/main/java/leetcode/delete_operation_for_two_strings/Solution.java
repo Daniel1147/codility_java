@@ -26,12 +26,18 @@ class Solution {
       for (int j = 1; j < cB.length + 1; j++) {
         a = lcs[i - 1][j];
         b = lcs[i][j - 1];
-        c = lcs[i - 1][j - 1];
-        if (cA[i - 1] == cB[j - 1])
-          c++;
+        if (a > b)
+          max = a;
+        else
+          max = b;
 
-        max = Math.max(a, b);
-        max = Math.max(max, c);
+        if (cA[i - 1] == cB[j - 1]) {
+          c = lcs[i - 1][j - 1] + 1;
+          if (c > max)
+            max = c;
+        }
+
+
         lcs[i][j] = max;
       }
     }
