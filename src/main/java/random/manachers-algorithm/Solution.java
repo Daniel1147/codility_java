@@ -3,7 +3,7 @@ package random.manachers_algorithm;
 import java.util.*;
 
 class Solution {
-  private boolean VERBOSE = true;
+  private boolean VERBOSE = false;
   public String LPS(String str) {
     char[] charS;
     int[] lps;
