@@ -9,20 +9,12 @@ class Solution {
   public int countSubstrings(String s) {
     char[] charS;
     int[] lps;
-    int current, i, center, n, ans, currentLeft;
+    int current, i, center, n, ans, currentLeft, iLeft, iRight;
 
     n = s.length() * 2 + 1;
 
     lps = new int[n];
-    charS = new char[n];
-
-    for (i = 0; i < s.length(); i++) {
-      charS[i * 2 + 1] = s.charAt(i);
-    }
-
-    for (i = 0; i < n; i+= 2) {
-      charS[i] = '.';
-    }
+    charS = s.toCharArray();
 
     lps[0] = 0;
     center = 0;
@@ -31,7 +23,12 @@ class Solution {
     for (current = 1; current < n; current++) {
       if (center + lps[center] < current) {
         for (i = 0; current - i >= 0 && current + i < n; i++) {
-          if (charS[current + i] != charS[current - i])
+          if ((current + i) % 2 == 0)
+            continue;
+
+          iLeft = (current - i - 1) / 2;
+          iRight = (current + i - 1) / 2 ;
+          if (charS[iLeft] != charS[iRight])
             break;
         }
 
@@ -39,12 +36,18 @@ class Solution {
       } else {
         currentLeft = center * 2 - current;
 
-        if (center + lps[center] > i + lps[currentLeft])
+        if (center + lps[center] > current + lps[currentLeft])
           lps[current] = lps[currentLeft];
         else {
-          for (i = lps[currentLeft] + 1; current + i < n && current - i >= 0; i++)
-            if (charS[i + current] != charS[current - i])
+          for (i = lps[currentLeft] + 1; current + i < n && current - i >= 0; i++) {
+            if ((current + i) % 2 == 0)
+              continue;
+
+            iLeft = (current - i - 1) / 2;
+            iRight = (current + i - 1) / 2 ;
+            if (charS[iLeft] != charS[iRight])
               break;
+          }
 
           lps[current] = i - 1;
         }
