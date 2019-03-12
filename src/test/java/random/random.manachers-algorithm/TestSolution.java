@@ -103,6 +103,14 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void test11() {
+    str = "dnncbwoneinoplypwgbwktmvkoimcooyiwirgbxlcttgteqthcvyoueyftiwgwwxvxvg";
+    expected = "iwi";
+
+    myTest();
+  }
+
   private void myTest() {
     actual = s.LPS(str);
 
