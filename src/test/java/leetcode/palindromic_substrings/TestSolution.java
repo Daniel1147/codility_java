@@ -31,6 +31,22 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode2() {
+    s = "aaa";
+    expected = 6;
+
+    myTest();
+  }
+
+  @Test
+  public void testLeetcode3() {
+    s = "dnncbwoneinoplypwgbwktmvkoimcooyiwirgbxlcttgteqthcvyoueyftiwgwwxvxvg";
+    expected = 77;
+
+    myTest();
+  }
+
   private void myTest() {
     actual = solution.countSubstrings(s);
     assertEquals(getFailMsg(), expected, actual);

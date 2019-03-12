@@ -7,34 +7,57 @@ class Solution {
   private char[] charS;
 
   public int countSubstrings(String s) {
-    int len, ans;
+    char[] charS;
+    int[] lps;
+    int current, i, center, n, ans, currentLeft, iLeft, iRight;
 
-    if (s.length() == 0)
-      return 0;
+    n = s.length() * 2 + 1;
 
+    lps = new int[n];
     charS = s.toCharArray();
-    n = charS.length;
 
+    lps[0] = 0;
+    center = 0;
     ans = 0;
-    for (int i = 0; i <= n * 2 - 2; i++) {
-      if (i % 2 == 0) {
-        len = middleAt(i / 2, i / 2);
-        ans += (len + 1) / 2;
+
+    for (current = 1; current < n; current++) {
+      if (center + lps[center] < current) {
+        for (i = 0; current - i >= 0 && current + i < n; i++) {
+          if ((current + i) % 2 == 0)
+            continue;
+
+          iLeft = (current - i - 1) / 2;
+          iRight = (current + i - 1) / 2 ;
+          if (charS[iLeft] != charS[iRight])
+            break;
+        }
+
+        lps[current] = i - 1;
       } else {
-        len = middleAt(i / 2, i / 2 + 1);
-        ans += len / 2;
+        currentLeft = center * 2 - current;
+
+        if (center + lps[center] > current + lps[currentLeft])
+          lps[current] = lps[currentLeft];
+        else {
+          for (i = center + lps[center] - current + 1; current + i < n && current - i >= 0; i++) {
+            if ((current + i) % 2 == 0)
+              continue;
+
+            iLeft = (current - i - 1) / 2;
+            iRight = (current + i - 1) / 2 ;
+            if (charS[iLeft] != charS[iRight])
+              break;
+          }
+
+          lps[current] = i - 1;
+        }
       }
+
+      ans += (lps[current] + 1) / 2;
+      if (center + lps[center] < current + lps[current])
+        center = current;
     }
 
     return ans;
-  }
-
-  private int middleAt(int l, int r) {
-    while (l >= 0 && r < n && charS[l] == charS[r]) {
-      l--;
-      r++;
-    }
-
-    return (r - 1) - (l + 1) + 1;
   }
 }
