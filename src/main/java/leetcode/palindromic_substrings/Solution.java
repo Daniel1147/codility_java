@@ -39,7 +39,7 @@ class Solution {
         if (center + lps[center] > current + lps[currentLeft])
           lps[current] = lps[currentLeft];
         else {
-          for (i = lps[currentLeft] + 1; current + i < n && current - i >= 0; i++) {
+          for (i = center + lps[center] - current + 1; current + i < n && current - i >= 0; i++) {
             if ((current + i) % 2 == 0)
               continue;
 
@@ -54,6 +54,8 @@ class Solution {
       }
 
       ans += (lps[current] + 1) / 2;
+      if (center + lps[center] < current + lps[current])
+        center = current;
     }
 
     return ans;
