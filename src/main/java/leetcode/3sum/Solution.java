@@ -13,7 +13,6 @@ class Solution {
       return result;
 
     Arrays.sort(nums);
-    // System.out.println(Arrays.toString(nums));
 
     i1 = 0;
     layer1I3 = nums.length - 1;
@@ -23,26 +22,9 @@ class Solution {
       while (i2 < i3) {
         sum = -1 * (nums[i1] + nums[i2]);
 
-        // find matched i3 and set i3 to last or the last one bigger than sum
-        while (i3 > i2) {
-          if (nums[i3] < sum) {
-            // if (i3 < nums.length - 1)
-            //   i3++;
-
-            break;
-          }
-
-          // System.out.printf("a: %2d, b: %2d, c: %2d, i3: %2d, sum: %3d\n", nums[i1], nums[i2], nums[i3], i3, sum);
-
-          if (nums[i3] == sum) {
-            result.add(build(nums[i1], nums[i2], nums[i3]));
-          }
-
-          oldI3 = nums[i3];
-          i3--;
-          while (i3 > i2 && oldI3 == nums[i3])
-            i3--;
-        }
+        i3 = bSearch(nums, i2 + 1, i3, sum);
+        if (sum == nums[i3])
+          result.add(build(nums[i1], nums[i2], nums[i3]));
 
         if (i2 == i1 + 1)
           layer1I3 = i3;
@@ -51,8 +33,6 @@ class Solution {
         i2++;
         while (i2 < nums.length - 1 && nums[i2] == oldI2)
           i2++;
-
-        // System.out.printf("i2: %2d, i3: %2d\n", i2, i3);
       }
 
       oldI1 = nums[i1];
@@ -73,5 +53,24 @@ class Solution {
     result.add(c);
 
     return result;
+  }
+
+  private int bSearch(int[] nums, int start, int end, int ceiling) {
+    int middle;
+    if (start >= end)
+      return start;
+
+    middle = ((start + end) / 2) + 1;
+    if (nums[middle] == ceiling) {
+      while (middle - 1 >= start && nums[middle - 1] == ceiling)
+        middle--;
+      return middle;
+    }
+
+    if (nums[middle] > ceiling) {
+      return bSearch(nums, start, middle - 1, ceiling);
+    }
+
+    return bSearch(nums, middle, end, ceiling);
   }
 }
