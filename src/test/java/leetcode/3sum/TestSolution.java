@@ -43,6 +43,16 @@ public class TestSolution {
     myTest();
   }
 
+  @Test
+  public void testLeetcode3() {
+    nums = new int[] {2,0,-2,-5,-5,-3,2,-4};
+    expected = new ArrayList<List<Integer>>();
+    expected.add(Arrays.asList(-4, 2, 2));
+    expected.add(Arrays.asList(-2, 0, 2));
+
+    myTest();
+  }
+
   private void myTest() {
     actual = s.threeSum(nums);
 
