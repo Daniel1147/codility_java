@@ -4,13 +4,17 @@ import java.util.*;
 
 class Solution {
   public int findDuplicate(int[] nums) {
-    Set<Integer> s = new HashSet<Integer>();
+    boolean[] a;
+    int n;
+
+    a = new boolean[nums.length + 1];
 
     for (int i = 0; i < nums.length; i++) {
-      if (s.contains(nums[i]))
-        return nums[i];
+      n = nums[i];
+      if (a[n])
+        return n;
 
-      s.add(nums[i]);
+      a[n] = true;
     }
 
     return -1;
